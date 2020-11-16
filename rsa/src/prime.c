@@ -1,4 +1,5 @@
-#include "prime.h"
+#include "../inc/prime.h"
+#include "../inc/macro.h"
 
 int test(bit128 p)
 {
@@ -30,7 +31,7 @@ BigPrimeGenerator(int n_bits)
             if(pass_test == 0)
                 printf("\033[1;31mERROR:\t\033[0m\t");
             else printf("\033[1;33mMISSING:\33[0m");
-            bit128_print_hex(p);
+            bit128_print(p, P_HEX, NULL);
             if(pass_test != ss_test)
                 printf("SolovayStrassen\n");
             if(pass_test != mr_test)
@@ -38,7 +39,7 @@ BigPrimeGenerator(int n_bits)
         }
         if( ss_test == 0 && mr_test == 0){
             printf("\033[1;32mGOOD:\033[0m");
-            bit128_print_hex(p);
+            bit128_print(p, P_HEX, NULL);
             printf("Number of odd numbers searched: %d\n", total);
             return p;
         }
@@ -314,40 +315,59 @@ MillerRabinPrimalityTest(bit128 n)
 }
 
 //   Print bit128 in hexadecimal format
-int 
-bit128_print_hex(bit128 n)
+char * 
+bit128_print(bit128 n, int flag, FILE *fp)
 {
   if (n == 0)
-    return printf("0\n");
+  {
+        printf("0\n");
+        return "0";
+  }
 
   char str[40] = {0}; // log10(1 << 128) + '\0'
   char *s = str + sizeof(str) - 1; // start at the end
   while (n != 0) {
 	if (s == str)
-        return -1; // never happens
-
-    *--s = "0123456789abcdef"[n % 16]; // save last digit
-    n /= 16;                     // drop it
+        return NULL; // never happens
+    if(flag == P_HEX)
+    {
+        *--s = "0123456789abcdef"[n % 16]; // save last digit
+        n /= 16;                     // drop it
+    } else if(flag == P_DEC){
+        *--s = "0123456789"[n % 10]; // save last digit
+        n /= 10;                     // drop it
+    }
   }
-  return printf("0x%s\n", s);
+    if(fp)
+        fputs(s, fp);
+    if(flag == P_HEX)
+    printf("0x");
+    printf("%s\n", s);
+    return s;
 }
 
 
-//   Print bit128 in decimal format
-int 
-bit128_print_dec(bit128 n)
-{
-  if (n == 0)
-    return printf("0\n");
+//    Print bit128 in decimal format
+// char * 
+// bit128_print_dec(bit128 n, FILE *fp)
+// {
+//   if (n == 0)
+//   {
+//         printf("0\n");
+//         return "0";
+//   }
 
-  char str[40] = {0}; // log10(1 << 128) + '\0'
-  char *s = str + sizeof(str) - 1; // start at the end
-  while (n != 0) {
-	if (s == str)
-        return -1; // never happens
+//   char str[40] = {0}; // log10(1 << 128) + '\0'
+//   char *s = str + sizeof(str) - 1; // start at the end
+//   while (n != 0) {
+// 	if (s == str)
+//         return NULL; // never happens
 
-    *--s = "0123456789"[n % 10]; // save last digit
-    n /= 10;                  // drop it
-  }
-  return printf("%s\n", s);
-}
+//     *--s = "0123456789"[n % 10]; // save last digit
+//     n /= 10;                  // drop it
+//   }
+//   if(fp)
+//     fputs(s, fp);
+//   printf("%s\n", s);
+//   return s;
+// }

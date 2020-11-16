@@ -23,13 +23,13 @@ static bit128 __VAL_BIT128;
             __VAL_BIT128 = x; \
             printf(#x); \
             printf(": ");\
-            bit128_print_hex(__VAL_BIT128);
+            bit128_print(__VAL_BIT128, P_HEX, NULL);
 
 #define PRINT_BIT128_DEC(x) \
             __VAL_BIT128 = x; \
             printf(#x); \
             printf(": ");\
-            bit128_print_dec(__VAL_BIT128);
+            bit128_print(__VAL_BIT128, P_DEC, NULL);
 
 
 #endif

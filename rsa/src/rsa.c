@@ -1,15 +1,9 @@
-#include "rsa.h"
+#include "../inc/rsa.h"
 
 void
-RsaKeyPairGenerator(int n_bits)
+RsaKeyPairGenerator(int n_bits, bit128* e, bit128* d, bit128* n)
 {
-    bit128_set_1(&HALF, 64);
-    /*
-    *   n, e is public
-    *   d is secret
-    *   p, q, Phi_n must be destroyed or kept secret
-    */
-    bit128 p, q, n, d, e, Phi_n;
+    bit128 p, q, Phi_n;
 
     //  1. Select two big prime(64bit), assigned to p and q,
     //  and |p - q| can't be too small.
@@ -22,34 +16,33 @@ RsaKeyPairGenerator(int n_bits)
             q = BigPrimeGenerator(n_bits/2);
 
     //  2. Calculate n = p*q and the euler function Phi(n) for n.
-    n = p*q;
+    *n = p*q;
     Phi_n = (p-1) * (q-1);
 
     printf("Calculate (d, Phi_n) == 1 ...\n");
     //  3. Select d randomly and satisfy (d, Phi(n)) == 1.
     //  4. Get e , which satisfies condition (e*d) =  1 (mod Phi_n).
     do {
-        d = BigIntegerGenerator(n_bits/2, NT_RAND, NT_RAND);
-    } while (bit128_gcd(d, Phi_n, &e) != 1);
+        *d = BigIntegerGenerator(n_bits/2, NT_RAND, NT_RAND);
+    } while (bit128_gcd(*d, Phi_n, e) != 1);
 
-    // TEST
+     // TEST
     bit128 encoded, decoded;
     bit128 m = (bit128)(0x123ffff4);
 
     printf("Encoded ...\n");
-    Rsa(&encoded, m, e, n);
+    Rsa(&encoded, m, *e, *n);
     printf("Decoded ...\n");
-    Rsa(&decoded, encoded, d, n);
+    Rsa(&decoded, encoded, *d, *n);
     printf("Done.\nHere are the results of the test:\n");
     PRINT_BIT128_DEC(p)
     PRINT_BIT128_DEC(q)
-    PRINT_BIT128_DEC(n)
-    PRINT_BIT128_DEC(d)
-    PRINT_BIT128_DEC(e)
+    PRINT_BIT128_DEC(*n)
+    PRINT_BIT128_DEC(*d)
+    PRINT_BIT128_DEC(*e)
     PRINT_BIT128_DEC(m)
     PRINT_BIT128_DEC(encoded)
     PRINT_BIT128_DEC(decoded)
-
 }
 
 void
