@@ -4,6 +4,7 @@ int test(bit128 p)
 {
     if(p < 2)
         return 1;
+    
     for (int i = 2;  i < p/2; i++)
    {
        if(p%i == 0)
@@ -18,7 +19,7 @@ BigPrimeGenerator(int n_bits)
     bit128 p;
     int total = 0;
     do {
-        p = BigOddIntegerGenerator(n_bits);
+        p = BigIntegerGenerator(n_bits, NT_ODD, NT_RAND);
 
         total++;
         int ss_test = SolovayStrassenPrimalityTest(p);
@@ -29,7 +30,7 @@ BigPrimeGenerator(int n_bits)
             if(pass_test == 0)
                 printf("\033[1;31mERROR:\t\033[0m\t");
             else printf("\033[1;33mMISSING:\33[0m");
-            PRINT_BIT128(p);
+            bit128_print_hex(p);
             if(pass_test != ss_test)
                 printf("SolovayStrassen\n");
             if(pass_test != mr_test)
@@ -37,8 +38,8 @@ BigPrimeGenerator(int n_bits)
         }
         if( ss_test == 0 && mr_test == 0){
             printf("\033[1;32mGOOD:\033[0m");
-            PRINT_BIT128(p);
-            PRINT_INT(total);
+            bit128_print_hex(p);
+            printf("Number of odd numbers searched: %d\n", total);
             return p;
         }
         
@@ -56,52 +57,104 @@ bit128_swap(bit128* a, bit128* b)
 bit128 
 bit128_power_mod(bit128 a, bit128 n, bit128 p)
 {
-    if(p == 0) //ERROR
-        return 0;
+    if(p == 0)
+        return 0;  // ERROR
     if(n == 1)
         return a % p;
     if(n == 0)
         return 1;
+
     bit128 ret;
     ret = bit128_power_mod(a, n/2, p);
-    ret = (ret * ret) % p;
-    if(n%2 == 1)
-        ret = (ret * a) % p;
+    ret = (ret*ret) % p;
+    if(n%2)
+        ret = (ret*a) % p;
+
     return ret;
 }
 
 bit128
-bit128_gcd(bit128 a, bit128 b)
+bit128_gcd(bit128 n, bit128 b, bit128* inverse)
 {
+    bit128 max = MAX(n, b);
+    bit128 min = MIN(n, b);
     bit128 r = 0, q = 0;
-    bit128 t = a;
-    bit128 s = b;
+    bit128 t = max;
+    bit128 s = min;
 
+    bit128 t_2 = 0, t_1 = 1, temp = 0;
+    int sign_t_2 = 1, sign_t_1 = 1, sign_temp = 1;
     // r = q*t + s
     do
     {
-        r = MAX(t, s);
-        t = MIN(t, s);
+        r = t;
+        t = s;
         q = r / t;
         s = r - q * t;
+
+        temp = t_1;
+        sign_temp = sign_t_1;
+        
+        if(sign_t_1 == sign_t_2)
+        {
+            if(t_2 < q*t_1)
+            {
+                t_1 = q*t_1 - t_2;
+                sign_t_1 = -sign_t_1;
+            } else t_1 = t_2 - q*t_1;
+        } else if(sign_t_1 != sign_t_2)
+        {
+            t_1 = t_2 + q*t_1;
+            sign_t_1 = -sign_t_1;
+        }
+
+        t_2 = temp;
+        sign_t_2 = sign_temp;
+    
     } while(s != 0);
 
+    if(t == 1 && inverse){
+        if(sign_t_2 == -1)
+        {
+            while(t_2 > max) t_2 -= max;
+            t_2 = max - t_2;
+        }
+        *inverse = t_2 % max;
+    }
+
     return t;
+
 }
 
+/*
+*   parity is NT_ODD or NT_EVEN or NT_RAND
+*   flag is NT_BIG or NT_RAND
+*/
 bit128 
-BigOddIntegerGenerator(int n_bits)
+BigIntegerGenerator(int n_bits, int parity, int flag)
 {
-    
-    bit128 ret = 0x1;
-    for(int i = 1; i < n_bits - 1; i++)
+    //  Set 0 or 1 at random on bit i, i in [0, n_bit).
+    bit128 ret = 0x0;
+    for(int i = 0; i < n_bits; i++)
     {   
         if(rand()%2 == 1)
             bit128_set_1(&ret, i);
+        else 
+            bit128_set_0(&ret, i);
     }
-    bit128_set_1(&ret, n_bits - 1);
+    //  The first bit is set to 1/0 to make sure it's odd/even.
+    if(parity == NT_ODD)
+        bit128_set_1(&ret, 0);
+    if(parity == NT_EVEN)
+        bit128_set_0(&ret, 0);
+
+    //  The highest bit is set to 1 to make sure it's a big integer.
+    if(flag == NT_BIG)
+        bit128_set_1(&ret, n_bits - 1);
+
     return ret;
 }
+
 
 static int
 JacobiSymbol(bit128 numer, bit128 denom)
@@ -117,15 +170,19 @@ JacobiSymbol(bit128 numer, bit128 denom)
 
     while (1)
     {
-        // Theorem: (1/n) = 1
+        /*
+        *   Theorem: (1/n) = 1
+        */
         if(m < 2)
             break;
         
-        //  Property 4: 
-        //  If n and m both is odd number,
-        //            { -(n/m), when m = n = 3 (mod 4);
-        //  (m/n) = ->{
-        //            { (n/m), otherwise.
+        /*
+        *   Property 4: 
+        *   If n and m both is odd number,
+        *             { -(n/m), when m = n = 3 (mod 4);
+        *   (m/n) = ->{
+        *             { (n/m), otherwise.
+        */
         if(m % 2 == 1) {
             if(m % 4 == 3 && n % 4 == 3) {
                 sign = -sign;
@@ -133,20 +190,24 @@ JacobiSymbol(bit128 numer, bit128 denom)
             bit128_swap(&m, &n);
         }
 
-        //  Property 1:
-        // If n is an odd number, m1 = m2 (mod n),
-        // (m1/n) = (m2/n).
+        /*
+        *   Property 1:
+        *   If n is an odd number, m1 = m2 (mod n),
+        *   (m1/n) = (m2/n).
+        */
         if(m >= n) {
             m =  m % n;
         }
 
-        // Property 3:
-        // ( (m1*m2)/n ) = (m1/n)*(m2/n)
-        //
-        // Property 2:
-        //           {  1, when n= 1 (mod 8) or n = -1 (mod 8)
-        // (2/n) = ->{
-        //           {  -1, when n= 3 (mod 8) or n = -3 (mod 8)
+        /*
+        *   Property 3:
+        *   ( (m1*m2)/n ) = (m1/n)*(m2/n)
+        *
+        *   Property 2:
+        *           {  1, when n= 1 (mod 8) or n = -1 (mod 8)
+        *   (2/n)=->{
+        *           {  -1, when n= 3 (mod 8) or n = -3 (mod 8)
+        */
         while(m >= 2 && m % 2 == 0) {
             if(n%8 == 1 || n%8 == 7)
                 sign = sign;
@@ -159,14 +220,20 @@ JacobiSymbol(bit128 numer, bit128 denom)
     return sign;
 }
 
+/*
+*   Assume that p is an odd number,
+*   1. p is a prime, returns 0;
+*   2. p is odd composite number, returns 0 with a probability of at most 0.5.
+*/
 int
 SolovayStrassenPrimalityTest(bit128 p)
 {
     if(p%2 == 0 || p < 2)
         return 1;
     /*
-    *  If p is not a prime number, there is at most 0.5 probability
-    *  that 2. and 3. are true.*/
+    *   If p is not a prime number(i.e., an odd composite number), 
+    *   there is at most 0.5 probability that 2. and 3. are both true.
+    */
     for(int i = 0; i < TEST_TIMES; i++)
     {   
         /*
@@ -174,25 +241,32 @@ SolovayStrassenPrimalityTest(bit128 p)
         *  Note: When m=1, the following 2. and 3. are obviously true,
         *  so we select from {2, ... , p-1}. */
         bit128 m = rand()  % (p-2) + 2;
+
         /*
-        *  2. Is (m, p) equal to 1 ?
-        *  Yes->continue; No-> return false, i.e., return 1.*/
-        if(bit128_gcd(m, p) != 1)
+        *   2. Is (m, p) equal to 1 ?
+        *   Yes->continue; No-> return false.(i.e., return 1)
+        */
+        if(bit128_gcd(m, p, NULL) != 1)
             return 1;
+        
         /*
-        *  3. Is (m/p) equal to m^{(p-1)/2} (mod p) ?
-        *  Yes->continue; No-> return false, i.e., return 1.*/
+        *   3. Is (m/p) equal to m^{(p-1)/2} (mod p) ?
+        *   Yes->continue; No-> return false.(i.e., return 1)
+        */
         int J = JacobiSymbol(m, p);
         bit128 temp = bit128_power_mod(m, ((p-1)/2), p);
         if(! ((J == 1 && temp == 1) || (J == -1 && temp == p-1))) 
             return 1;
-        
-
     }
     return 0;
 
 }
 
+/*
+*   Assume that p is an odd number,
+*   1. p is a prime, returns 0; otherwise returns 1;
+*   the probability of error is 0.25 at most.
+*/
 int
 MillerRabinPrimalityTest(bit128 n)
 {
@@ -200,7 +274,8 @@ MillerRabinPrimalityTest(bit128 n)
     if(n <= 2 || n%2 == 0)
         return 1;
     /*
-    *   1. n -1 = 2^km, m is an odd number.*/
+    *   1. n -1 = 2^km, m is an odd number.
+    */
     bit128 m = n - 1;
     bit128 k = 0;
     while(m%2 == 0)
@@ -209,22 +284,26 @@ MillerRabinPrimalityTest(bit128 n)
         k++;
     }
     /*
-    *   2. Select a integer 'a' randomly ( 1 <= a <= n-1)*/
+    *   2. Select a integer 'a' randomly ( 1 <= a <= n-1)
+    */
     bit128 a = rand() % (n-1) + 1;
 
     /*
-    *    3. b = a^m (mod n)*/
+    *    3. b = a^m (mod n)
+    */
     bit128 b = bit128_power_mod(a, m, n);
 
     /*
-    * If b =1 (mod n), answer n is prime number , i.e., return 0.*/
+    * If b =1 (mod n), answer n is prime number.(i.e., return 0)
+    */
     if(b%n == 1)
         return 0;
 
     /*
     *   for i = 0 ~ k-1, do:
-    * if b = -1 (mod n), return 0;
-    * b = b^2 (mod n), otherwise.*/
+    *       if b = -1 (mod n), return 0;
+    *       otherwise,update b <- b^2 (mod n).
+    */
    for(int i = 0; i < k; i++)
    {
        if(b % n == n - 1)
@@ -234,8 +313,9 @@ MillerRabinPrimalityTest(bit128 n)
     return 1;
 }
 
+//   Print bit128 in hexadecimal format
 int 
-bit128_print(bit128 n)
+bit128_print_hex(bit128 n)
 {
   if (n == 0)
     return printf("0\n");
@@ -250,4 +330,24 @@ bit128_print(bit128 n)
     n /= 16;                     // drop it
   }
   return printf("0x%s\n", s);
+}
+
+
+//   Print bit128 in decimal format
+int 
+bit128_print_dec(bit128 n)
+{
+  if (n == 0)
+    return printf("0\n");
+
+  char str[40] = {0}; // log10(1 << 128) + '\0'
+  char *s = str + sizeof(str) - 1; // start at the end
+  while (n != 0) {
+	if (s == str)
+        return -1; // never happens
+
+    *--s = "0123456789"[n % 10]; // save last digit
+    n /= 10;                  // drop it
+  }
+  return printf("%s\n", s);
 }

@@ -5,11 +5,10 @@
 
 typedef unsigned long long bit64;
 
-#define INTERVAL 0xffff
-#define MODE_ENCODE 0
-#define MODE_DECODE 1
+#define INTERVAL 0x4 //1024
+#define MINPOWER 0x4 //1024
 
-void RasInitial();
+void RsaKeyPairGenerator(int n_bits);
 void Rsa(bit128* out, bit128 in, bit128 key, bit128 n);
 
 #endif

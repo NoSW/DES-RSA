@@ -19,10 +19,17 @@ static bit128 __VAL_BIT128;
             printf(#x); \
             printf(": %d\n", __VAL_INT);
 
-#define PRINT_BIT128(x) \
+#define PRINT_BIT128_HEX(x) \
             __VAL_BIT128 = x; \
             printf(#x); \
             printf(": ");\
-            bit128_print(__VAL_BIT128);
+            bit128_print_hex(__VAL_BIT128);
+
+#define PRINT_BIT128_DEC(x) \
+            __VAL_BIT128 = x; \
+            printf(#x); \
+            printf(": ");\
+            bit128_print_dec(__VAL_BIT128);
+
 
 #endif
