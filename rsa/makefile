@@ -1,12 +1,14 @@
-CC = gcc
+CC = g++
 
 RM-F := rm
 
+LIBDIR:=C:/boost_1_74_0/
+INCLUDES:=. C:/boost_1_74_0/
 SRC = $(wildcard ./src/*.c)
-OBJ = $(SRC:.c=.o)
+OBJ = $(SRC:.c=.o)  
 
 rsa: $(OBJ)
-	$(CC) $^ -o $@  
+	$(CC) $^ -o $@  $(addprefix -L,$(LIBDIR))  $(addprefix -l,$(LIBS))
 
 # $^ : the target
 # $@ : the dependencies
@@ -14,4 +16,4 @@ rsa: $(OBJ)
 
 .PHONY: clean
 clean:
-	@$(RM-F) rsa.exe $(OBJ)
+	@$(RM-F) *.exe $(OBJ)

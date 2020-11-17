@@ -12,21 +12,25 @@ int run(int argc, char* argv[])
     bit128_print(cmd_out, P_DEC, fp);
     fclose(fp);
 
-    // TEST
-    // bit128 encoded, decoded;
-    // encoded = cmd_out;
-    // Rsa(&cmd_out, encoded, cmd_d, cmd_n);
-    // decoded = cmd_out;
-
-    printf("Done.\nHere are the results of the test:\n");
+    //TEST
+    printf("--------------------------------------------------------\n");
     PRINT_BIT128_DEC(cmd_n)
-    PRINT_BIT128_DEC(cmd_out)
-    // PRINT_BIT128_DEC(cmd_d)
-    // PRINT_BIT128_DEC(cmd_e)
+    PRINT_BIT128_DEC(cmd_d)
+    PRINT_BIT128_DEC(cmd_e)
+    printf("\n");
     PRINT_BIT128_DEC(cmd_in)
-    PRINT_BIT128_DEC(cmd_k)
-    // PRINT_BIT128_DEC(encoded)
-    // PRINT_BIT128_DEC(decoded)
+    PRINT_BIT128_DEC(cmd_out)
+    bit128 encoded = 0, decoded = 0;
+    encoded = cmd_out;
+    Rsa(&cmd_out, encoded, cmd_d, cmd_n);
+    decoded = cmd_out;
+
+    printf("Done.\n\nHere are the results of the test:\n");
+    // PRINT_BIT128_DEC(cmd_k)
+    PRINT_BIT128_DEC(encoded)
+    PRINT_BIT128_DEC(decoded)
+    isError(decoded != cmd_in, "!!!ERROR!!!", NULL);
+    return 0;
 }
 
 static int
@@ -50,7 +54,16 @@ CommandParsing(int argc, char* argv[])
         cmd_n = Str2Bit128(argv[3]);//
     } else {
         srand((unsigned)time(NULL));
-        RsaKeyPairGenerator(64, &cmd_e, &cmd_d, &cmd_n);
+        RsaKeyPairGenerator(128, &cmd_e, &cmd_d, &cmd_n);
+        FILE* fp = fopen("key.txt","w");
+        fputs("<SK, PK, n>: <", fp);
+        bit128_print(cmd_d, P_DEC, fp);
+        fputs(", ", fp);
+        bit128_print(cmd_e, P_DEC, fp);
+        fputs(", ", fp);
+        bit128_print(cmd_n, P_DEC, fp);
+        fputs(">", fp);
+        fclose(fp);
         cmd_k = cmd_e;
     }
     return 0;
