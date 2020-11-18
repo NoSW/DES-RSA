@@ -1,0 +1,198 @@
+time:	2020/11/18 12:18:59
+Input:	data
+Output:	./out/out-data
+
+<SK, PK, n> saved in ./key/rsa-key-data.txt:
+p:	16832814462704517311
+q:	4850724399157041467
+Phi:81651343820724327503263966413184776460
+e:	37208884689995478232613839724805683017
+d:	15490575501674459733
+n:	81651343820724327524947505275046335237
+
+File size:	2KB
+Run time:	120923.900000us
+Operating speed:	22B/ms
+-----------------------------------------
+time:	2020/11/18 16:59:16
+Input:	C:\Users\LLQ\Desktop\DES-RSA\des\data\data6.txt
+Output:	./out/out-data6.txt
+
+<SK, PK, n> saved in ./key/rsa-key-data6.txt.txt:
+p:	17328243013680203669
+q:	17339296941281002213
+Phi:300459551084879051229727063079318513616
+e:	33230594444975229510544973505321388667
+d:	9205270676611185395
+n:	300459551084879051264394603034279719497
+
+File size:	1KB
+Run time:	1646356.700000us
+Operating speed:	1B/ms
+-----------------------------------------
+time:	2020/11/18 17:1:57
+Input:	C:\Users\LLQ\Desktop\DES-RSA\rsa\out\out-data6.txt
+Output:	./out/out-out-data6.txt
+
+
+k:	9205270676611185395
+n:	300459551084879051264394603034279719497
+
+File size:	1KB
+Run time:	1115618.700000us
+Operating speed:	1B/ms
+-----------------------------------------
+time:	2020/11/18 17:12:12
+Input:	C:\Users\LLQ\Desktop\DES-RSA\des\data\data10.txt
+Output:	./out/out-data10.txt
+
+<SK, PK, n> saved in ./key/rsa-key-data10.txt.txt:
+p:	17849264160171536707
+q:	5880206727902118691
+Phi:104957363202742830414186518130503635140
+e:	66957118030695871686955432148154252413
+d:	4967757431188195697
+n:	104957363202742830437915989018577290537
+
+File size:	2KB
+Run time:	148678.000000us
+Operating speed:	15B/ms
+-----------------------------------------
+Time:	2020/11/18 17:30:34
+Type:	ENCODE
+Input:	C:\Users\LLQ\Desktop\DES-RSA\des\data\data10.txt
+Output:	./out/out-data10.txt
+
+<SK, PK, n> saved in ./key/rsa-key-data10.txt.txt:
+p:	17178192152438069257
+q:	8712402538778222873
+Phi:149663324920521579506432387786539223232
+e:	54469102323777087645781918942839579193
+d:	1145202464729507977
+n:	149663324920521579532322982477755515361
+
+File size:	2KB
+Run time:	138976.700000us
+Operating speed:	16B/ms
+-----------------------------------------
+Time:	2020/11/18 17:33:7
+Type:	ENCODE
+Input:	C:\Users\LLQ\Desktop\DES-RSA\des\data\data10.txt
+Output:	./out/out-data10.txt
+
+<SK, PK, n> saved in ./key/rsa-key-data10.txt.txt:
+p:	6712637410886058481
+q:	1851857132166947219
+Phi:12430845465000017976747229738221308640
+e:	7113696608296342031399601409246371083
+d:	1700530826615562947
+n:	12430845465000017985311724281274314339
+
+File size:	2KB
+Run time:	136277.800000us
+Operating speed:	16B/ms
+-----------------------------------------
+Time:	2020/11/18 17:34:23
+Type:	ENCODE
+Input:	C:\Users\LLQ\Desktop\DES-RSA\des\data\data10.txt
+Output:	./out/out-data10.txt
+
+<SK, PK, n> saved in ./key/rsa-key-data10.txt.txt:
+p:	7990502035696259903
+q:	18080014303724848829
+Phi:144468391099330901627471426459948094856
+e:	78106359056405171738892954957062952773
+d:	15895663036927085501
+n:	144468391099330901653541942799369203587
+
+File size:	2KB
+Run time:	140746.500000us
+Operating speed:	16B/ms
+-----------------------------------------
+Time:	2020/11/18 17:35:26
+Type:	DECODE
+Input:	C:\Users\LLQ\Desktop\DES-RSA\rsa\out\out-data10.txt
+Output:	./out/out-out-data10.txt
+
+
+k:	15895663036927085501
+n:	144468391099330901653541942799369203587
+
+File size:	4KB
+Run time:	138366.200000us
+Operating speed:	33B/ms
+-----------------------------------------
+time:	2020/11/18 17:36:11
+Type:	2020/11/18 17:36:11
+Input:	C:\Users\LLQ\Desktop\DES-RSA\des\data\data10.txt
+Output:	./out/out-data10.txt
+
+<SK, PK, n> saved in ./key/rsa-key-data10.txt.txt:
+p:	17520116388832452401
+q:	12174162025618004017
+Phi:213292735625331678384785983134328838400
+e:	176676428315724319631621592664967972207
+d:	14214712788541996943
+n:	213292735625331678414480261548779294817
+
+File size:	2KB
+Run time:	138295.000000us
+Operating speed:	16B/ms
+-----------------------------------------
+time:	2020/11/18 17:37:0
+Type:	2020/11/18 17:37:0
+Input:	C:\Users\LLQ\Desktop\DES-RSA\rsa\out\out-data10.txt
+Output:	./out/out-out-data10.txt
+
+
+k:	14214712788541996943
+n:	213292735625331678414480261548779294817
+
+File size:	4KB
+Run time:	150561.400000us
+Operating speed:	30B/ms
+-----------------------------------------
+time:	2020/11/18 17:37:53
+Input:	C:\Users\LLQ\Desktop\DES-RSA\des\data\data10.txt
+Output:	./out/out-data10.txt
+
+<SK, PK, n> saved in ./key/rsa-key-data10.txt.txt:
+p:	12938102364356076689
+q:	7183458690584153743
+Phi:92940323868901046249237668337734166496
+e:	71517985321211162510616081933042832607
+d:	17722988177030431583
+n:	92940323868901046269359229392674396927
+
+File size:	2KB
+Run time:	154442.800000us
+Operating speed:	14B/ms
+-----------------------------------------
+time:	2020/11/18 17:39:3
+Input:	C:\Users\LLQ\Desktop\DES-RSA\des\data\data6.txt
+Output:	./out/out-data6.txt
+
+<SK, PK, n> saved in ./key/rsa-key-data6.txt.txt:
+p:	15180129577709830687
+q:	16538795942343442679
+Phi:251061065464075025757679549569726417108
+e:	103855910820620862232519313357767016599
+d:	5687504883437715787
+n:	251061065464075025789398475089779690473
+
+File size:	1KB
+Run time:	73130.600000us
+Operating speed:	27B/ms
+-----------------------------------------
+time:	2020/11/18 17:39:50
+Input:	C:\Users\LLQ\Desktop\DES-RSA\rsa\out\out-data6.txt
+Output:	./out/out-out-data6.txt
+
+
+k:	5687504883437715787
+n:	251061065464075025789398475089779690473
+
+File size:	1KB
+Run time:	43409.900000us
+Operating speed:	46B/ms
+-----------------------------------------

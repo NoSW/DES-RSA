@@ -1,14 +1,12 @@
-CC = g++
+CC = gcc
 
 RM-F := rm
 
-LIBDIR:=C:/boost_1_74_0/
-INCLUDES:=. C:/boost_1_74_0/
 SRC = $(wildcard ./src/*.c)
 OBJ = $(SRC:.c=.o)  
 
 rsa: $(OBJ)
-	$(CC) $^ -o $@  $(addprefix -L,$(LIBDIR))  $(addprefix -l,$(LIBS))
+	$(CC) $^ -o $@
 
 # $^ : the target
 # $@ : the dependencies

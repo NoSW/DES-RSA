@@ -1,29 +1,28 @@
 #include "../inc/rsa.h"
+#include "../inc/cmd.h"
 
 void
-RsaKeyPairGenerator(int n_bits, bit128* e, bit128* d, bit128* n)
+RsaKeyPairGenerator(int n_bits, bit128 rsa[])
 {
-    bit128 p, q, Phi_n;
-
     //  1. Select two big prime(64bit), assigned to p and q,
     //  and |p - q| can't be too small.
     printf("Search the 1st prime ...\n");
-    p = BigPrimeGenerator(n_bits/2);
-    q = p;
+    rsa[RSA_P] = BigPrimeGenerator(n_bits/2);
+    rsa[RSA_Q] = rsa[RSA_P];
     printf("Search the 2nd prime ...\n");
-    while ((p>=q) && (p-q) < INTERVAL ||
-        p < q && (q-p) < INTERVAL)
-            q = BigPrimeGenerator(n_bits/2);
+    while ((rsa[RSA_P]>=rsa[RSA_Q]) && (rsa[RSA_P]-rsa[RSA_Q]) < INTERVAL ||
+        rsa[RSA_P] < rsa[RSA_Q] && (rsa[RSA_Q]-rsa[RSA_P]) < INTERVAL)
+            rsa[RSA_Q] = BigPrimeGenerator(n_bits/2);
 
     //  2. Calculate n = p * q and the euler function Phi(n) for n.
-    *n = p * q;
-    Phi_n = (p-1) * (q-1);
+    rsa[RSA_N] = rsa[RSA_P] * rsa[RSA_Q];
+    rsa[RSA_PhiN] = (rsa[RSA_P]-1) * (rsa[RSA_Q]-1);
 
     //  3. Select d randomly and satisfy (d, Phi(n)) == 1.
     //  4. Get e , which satisfies condition (e * d) =  1 (mod Phi_n).
     do {
-        *d = BigIntegerGenerator(n_bits/2, NT_RAND, NT_RAND);
-    } while (bit128_gcd(*d, Phi_n, e) != 1);
+        rsa[RSA_D] = BigIntegerGenerator(n_bits/2, NT_RAND, NT_RAND);
+    } while (bit128_gcd(rsa[RSA_D], rsa[RSA_PhiN], &rsa[RSA_E]) != 1);
 }
 
 void

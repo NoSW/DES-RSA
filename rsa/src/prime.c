@@ -1,6 +1,6 @@
 #include "../inc/prime.h"
-#include "../inc/macro.h"
 
+typedef unsigned long long bit64;
 static bit128 LIMIT = (bit128)(0x1) << 0x40;
 
 int test(bit128 p)
@@ -339,7 +339,7 @@ MillerRabinPrimalityTest(bit128 n)
     return 1;
 }
 
-//   Print bit128 in hexadecimal format
+//  Print bit128 in bin/dec/hex format to terminal or file
 char * 
 bit128_print(bit128 n, int flag, FILE *fp)
 {
