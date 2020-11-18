@@ -23,6 +23,8 @@ RsaKeyPairGenerator(int n_bits, bit128 rsa[])
     do {
         rsa[RSA_D] = BigIntegerGenerator(n_bits/2, NT_RAND, NT_RAND);
     } while (bit128_gcd(rsa[RSA_D], rsa[RSA_PhiN], &rsa[RSA_E]) != 1);
+
+    rsa[RSA_K] = rsa[RSA_E];
 }
 
 void

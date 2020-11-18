@@ -5,26 +5,61 @@ run(int argc, char* argv[])
 {   
     if(CommandParsing(argc, argv) != 0)
         exit(1);
-    // Read data from the file 'cmd_path[PATH_IN]'
-    FILE* fp = fopen(cmd_path[PATH_IN], "rb");
-    isError(fp==NULL, "Open file failed: %s\n", cmd_path[PATH_IN]);
-    total_bytes = fread(cmd_in, 1, MAX_BUFFER*16, fp);
-    int packet = total_bytes/16 + !!(total_bytes%16);
 
-    // Scanning for over n
-    for(int i = 0; i < packet; i++)
-        isError(cmd_in[i] >= cmd_rsa[RSA_N], "The file contents cannot be encoded: '%s' \n", cmd_path[PATH_IN]);
-
-
+    ReadData();
+    Check();
     Counter( for(int i = 0; i < packet; i++){
-                Rsa(&cmd_out[i], cmd_in[i], cmd_rsa[RSA_K], cmd_rsa[RSA_N]);
-                });
-    fp = fopen(cmd_path[PATH_OUT], "wb");
-    fwrite(cmd_out, 16, packet, fp);
-    fclose(fp);
-
+                Rsa(&cmd_out[i], cmd_in[i], cmd_rsa[RSA_K], cmd_rsa[RSA_N]);});
+    WriteData();
     OutLog();
     return total_bytes/(int)(run_time/1000);
+}
+static int
+Check()
+{
+ // Scanning for over n
+    for(int i = 0; i < packet; i++){
+        while(cmd_in[i] >= cmd_rsa[RSA_N])          
+        {PRINT_BIT128_DEC(cmd_rsa[RSA_N]);
+            if(cmd_rsa[RSA_INIT] == 1)
+            {
+                bit128 old_n = cmd_rsa[RSA_N];
+                while(cmd_rsa[RSA_N] <= old_n)
+                    RsaKeyPairGenerator(128, cmd_rsa);
+            } else isError(1, "the module is too small!", NULL);
+        }
+        //PRINT_BIT128_HEX(cmd_in[i]);
+    }
+    
+}
+
+static int
+ReadData()
+{
+     // Read data from the file 'cmd_path[PATH_IN]'
+    FILE* fp = fopen(cmd_path[PATH_IN], "rb");
+    isError(fp==NULL, "Open file failed: %s\n", cmd_path[PATH_IN]);
+    total_bytes = fread(cmd_in, cmd_mode[MODE_READ_BIT], MAX_BUFFER, fp);
+
+    int is_padding = (total_bytes%(16/cmd_mode[MODE_READ_BIT]));
+    packet = total_bytes/(16/cmd_mode[MODE_READ_BIT]) + !!is_padding;
+    PRINT_INT(total_bytes)
+    PRINT_BIT128_DEC(cmd_mode[MODE_READ_BIT])
+    PRINT_BIT128_DEC(cmd_mode[MODE_STATUS])
+    // 0x24, 0010 0100 , '$'
+    if(is_padding)
+        for(int i = cmd_mode[MODE_READ_BIT]; i < 16; i++)
+        {
+            bit128_set_1(&cmd_in[packet -1], (i*8+2));
+            bit128_set_1(&cmd_in[packet -1], (i*8+5));
+        }
+}
+static int
+WriteData()
+{
+    FILE* fp = fopen(cmd_path[PATH_OUT], "wb");
+    fwrite(cmd_out, 16, packet, fp);
+    fclose(fp);
 }
 
 static int
@@ -35,7 +70,8 @@ CommandParsing(int argc, char* argv[])
         printf("%s\n",help_info);
         return 1;
     }
-
+    cmd_mode[MODE_STATUS] = MODE_ENCODE;//default
+    cmd_mode[MODE_READ_BIT] = 8; //default
     for(int i = 1; i < argc; i++)
     {
         if(argv[i][0] == '-')
@@ -48,11 +84,16 @@ CommandParsing(int argc, char* argv[])
                     if(argv[i+1] && argv[i+1][0] != '-')
                         cmd_path[PATH_OUT_KEY] = argv[++i];
                     cmd_rsa[RSA_INIT] = 1;
-                    cmd_rsa[RSA_K] = cmd_rsa[RSA_E];
                 } else isError(1,"ERROR: Invalid Command: %s\n", argv[i]);
             } else {
                 switch (argv[i][1])
                 {
+                case 's':
+                    cmd_mode[MODE_STATUS] = MODE_DECODE;
+                case 'p':
+                    cmd_rsa[RSA_K] = Str2Bit128(argv[++i]);
+                    cmd_rsa[RSA_SPEC] = 1;
+                    break;
                 case 'h':
                     printf("%s\n",help_info);
                     return 1;
@@ -62,13 +103,12 @@ CommandParsing(int argc, char* argv[])
                 case 'o':
                     cmd_path[PATH_OUT] = argv[++i];
                     break;
-                case 'k':
-                    cmd_rsa[RSA_K] = Str2Bit128(argv[++i]);
-                    cmd_rsa[RSA_SPEC] = 1;
-                    break;
                 case 'm':
                     cmd_rsa[RSA_N] = Str2Bit128(argv[++i]);
                     cmd_rsa[RSA_SPEC] = 1;
+                    break;
+                case 'a':
+                    cmd_mode[MODE_READ_BIT] = Str2Bit128(argv[++i]);
                     break;
                 default:
                     isError(1,"ERROR: Invalid Command: %s\n", argv[i]);
@@ -95,6 +135,9 @@ CommandParsing(int argc, char* argv[])
         sprintf(cmd_path[PATH_OUT_KEY],"./key/rsa-key-%s.txt",getFileName(cmd_path[PATH_IN]));
     }
 
+    if(cmd_mode[MODE_STATUS] == MODE_DECODE)
+        cmd_mode[MODE_READ_BIT] = 16;
+
     return 0;
 }
 
@@ -120,7 +163,10 @@ OutLog()
     getCurrentTime();
     // Print log
     FILE* fp = fopen("rsa_log.txt","a");
-    fprintf(fp,"time:\t%s\n",curtime);
+    fprintf(fp,"Time:\t%s\n",curtime);
+    if(cmd_mode[MODE_STATUS] == MODE_ENCODE)
+        fprintf(fp,"Type:\tENCODE\n");
+    else fprintf(fp,"Type:\tDECODE\n");
     fprintf(fp,"Input:\t%s\n",cmd_path[PATH_IN]);
     fprintf(fp,"Output:\t%s\n\n",cmd_path[PATH_OUT]);
     
@@ -154,7 +200,7 @@ OutLog()
     fprintf(fp,"\nn:\t");
     bit128_print(cmd_rsa[RSA_N], P_DEC, fp);
 
-    fprintf(fp,"\n\nFile size:\t%dKB\n",total_bytes >> 10);
+    fprintf(fp,"\n\nFile size:\t%dKB\n",total_bytes * cmd_mode[MODE_READ_BIT]);
     fprintf(fp,"Run time:\t%fus\n",run_time);
     fprintf(fp,"Operating speed:\t%dB/ms\n",total_bytes/(int)(run_time/1000));
     fputs("-----------------------------------------\n",fp);

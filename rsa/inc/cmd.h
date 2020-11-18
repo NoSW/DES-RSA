@@ -6,7 +6,7 @@
 #include<assert.h>
 #include<time.h>
 #include<windows.h>
-#define MAX_BUFFER 1024 //8MB
+#define MAX_BUFFER 4096 //4MB
 #define MODE_ENCODE 0
 #define MODE_DECODE 1
 
@@ -27,8 +27,14 @@ enum{
     PATH_OUT_KEY,
     PATH_IN_KEY,
 };
+enum{
+    MODE_STATUS = 0,
+    MODE_READ_BIT,
+    MODE_WRITE_BIT,
+};
 static bit128 cmd_rsa[9] = {0};
 static char* cmd_path[9] = {NULL};
+static bit128 cmd_mode[3];
 static bit128 cmd_in[MAX_BUFFER] = {0};
 static bit128 cmd_out[MAX_BUFFER] = {0};
 static bit64 bit64_buffer[MAX_BUFFER] = {0};
@@ -42,6 +48,7 @@ static int CommandParsing(int argc, char* argv[]);
 static bit128 Str2Bit128(char *);
 static int ReadData();
 static int WriteData();
+static int Check();
 static void getCurrentTime();
 static void OutLog();
 static char* getFileName(char*);
@@ -62,10 +69,12 @@ static double run_time;
 static char help_info[] = "Usage:\n" \
             "\trsa.exe [option1] [option2] ... \n"\
             "\nOptions:\n"\
-            "\t-i <path>\t\tinput a file.\n" \
+            "\t-i <path>\t\tinput a file.(no more than 4 MB)\n" \
             "\t-o <path>\t\tthe out file(the default is './out/out-filename'.\n" \
-            "\t-k <key>\t\tthe key for encode(Public Key) or decode(Secret Key).\n"
+            "\t-s <key>\t\tthe Secret Key.\n"
+            "\t-p <key>\t\tthe Public Key.\n"
             "\t-m <modulu>\t\tthe modulu.\n"
+            "\t-a <num>\t\tRead the file in <num>-byte alignment. (Filled with the character '$', when less than 16 bytes(128 bit))\n"
             "\t--init <file>\tInitial a rsa key pair <SK, PK, mod>(saved in <file>) and perfrom encode.\n\n" \
             "Note:\n\tFor convenience, we dump all execution information into log.txt, regardless of the security.";
 
