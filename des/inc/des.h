@@ -31,7 +31,6 @@ typedef unsigned long long bit32;
 typedef unsigned long long bit28;
 
 // Calculation Functions
-static void KeyFormatConversion(bit64* key, char** k);
 static void S_box(bit32* out, bit48* in, const int* box_n, int n);
 static void RoundFunction(bit64* out, bit64* R_idec1, bit64* subkey);
 // Apply 'permuMatrix' to 'in', and then save the result to 'out'('n' bits)
@@ -42,7 +41,7 @@ static void GenerateSubkey(bit48* subkey, bit64* key, int n);
 // DES 
 static void DesUnit(bit64* out, bit64 data_in, bit64 key, int mode);
 static void Des2or3(bit64* out, bit64* in, bit64* key, int Algo_t, int mode);
-void Des(bit64* out, bit64 *in, char** key, int total_bytes, int Algo_t ,int mode);
+void Des(bit64* out, bit64 *in, bit64* key, int total_bytes, int Algo_t ,int mode);
 
 // bit operations
 #define bit_set_0(data,n) *data &= (~((bit64)(0x1) << (n&0x3f)))

@@ -191,7 +191,7 @@ Str2Bit128(char * str)
     if(str == NULL)
         return 0;
     bit128 ret = 0;
-    for(int i = 0; str[i] != '\0'; i++)
+    for(int i = 0; i < 38 && str[i] != '\0'; i++)
     {
         ret *= 10;
         ret += str[i] - '0';

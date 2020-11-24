@@ -17,15 +17,15 @@
         printf(f,v);   \
         exit(1);}
 
-// Run the DES algorithm and calculate the running time
-#define DesCounter  LARGE_INTEGER  time_start;\
+// Run the  'RunFunction' and calculate the running time
+#define Counter(RunFunction)  LARGE_INTEGER  time_start;\
 	                LARGE_INTEGER time_over;\
 	                double dqFreq;\
 	                LARGE_INTEGER f;\
 	                QueryPerformanceFrequency(&f);\
 	                dqFreq=(double)f.QuadPart;\
 	                QueryPerformanceCounter(&time_start);\
-                    Des(out_buff,in_buff, keys, total_bytes, algo,mode);\
+                    do{RunFunction;}while(0);\
 	                QueryPerformanceCounter(&time_over);\
 	                run_time=1000000*(time_over.QuadPart-time_start.QuadPart)/dqFreq; \
 
@@ -35,16 +35,17 @@ static char* out_path;
 static bit64 out_buff[MAX_BUFF_SIZE];
 static bit64 in_buff[MAX_BUFF_SIZE];
 static char* in_path;
-static char* keys[3];
+static bit64 bit_keys[3];
 static char curtime[32];
 static FILE *fp;
 static int total_bytes;
 static double run_time;
 
 int run(int argc, char* argv[]);
-static void _64Bits_Random_Alphanumeric_Key_Generator();
+static void KeyGenerator();
 static void CommandParsing(int argc, char* argv[]);
 static void getCurrentTime();
+static bit64 Str2Bit64(char *);
 static void OutLog();
 static char* getFileName(char*);
 
@@ -71,7 +72,7 @@ static char help_info[] = "*****************************************************
             "= [out_file] \n"\
             "(the deafault is the \"./decoded/filename\" or \"./encoded/filename\")\n\n"\
             "3. If you need input key(s), use the indicator '+',i.e., \n"\
-            " + [k1] + [k2] ...\n"\
-            "(The default is the 64 bit random alphanumeric key(s) or first-input-first-used)\n"
+            " --dec [k1] --dec [k2] ...\n"\
+            "(The default is the 64-bit random key(s)\n"
             "******************************************************************";
 #endif

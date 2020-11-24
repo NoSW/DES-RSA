@@ -2,33 +2,19 @@
 #include<stdio.h>
 #include "../inc/des.h"
 
-static void
-KeyFormatConversion(bit64* key, char** k)
-{
-    for(int i = 0; i < 3; i++)
-        if (k[i] != NULL)
-            for(int j = 0; j < 8; j++)
-            {
-                key[i] <<= 8;
-                key[i] = key[i] | (bit64)(k[i][j]);
-            }
-}
-
 void
-Des(bit64* out, bit64 *in, char** k, int total_bytes, int Algo_t ,int mode)
+Des(bit64* out, bit64 *in, bit64* key, int total_bytes, int Algo_t ,int mode)
 {
-    bit64 key[3];
     int packet_n = total_bytes/8 + !!(total_bytes % 8);
     bit64 fill_bytes = 0x0;
     if(total_bytes%8)
         for(int i = 0; i < 8-total_bytes%8; i++){
             fill_bytes <<= 8;
-            fill_bytes += '$';
+            fill_bytes += 36; //'$';
         }
     fill_bytes <<= (total_bytes%8)*8;
-    in[packet_n-1] += fill_bytes;
-    // char -> bit64
-    KeyFormatConversion(key, k);
+    in[packet_n-1] |= fill_bytes;
+
     if(mode == MODE_ENCODE)
         *in ^= IV;
 

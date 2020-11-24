@@ -12,7 +12,6 @@ run(int argc, char* argv[])
     algo = 0, mode = 0, k_flag = 0, total_bytes = 0;
     in_path = argv[1];
     fp = NULL; out_path =  NULL;
-    keys[0] = keys[1] = keys[2] = NULL;
 
     // read from in_path
     fp = fopen(in_path, "rb");
@@ -34,8 +33,9 @@ run(int argc, char* argv[])
         if(mode == MODE_ENCODE)
             sprintf(out_path,"./encoded/%s",getFileName(in_path));
     }
+
     // Call program and calculate running time
-    DesCounter;
+    Counter(Des(out_buff,in_buff, bit_keys, total_bytes, algo, mode);)
     // Write the results
     fp = fopen(out_path,"wb");
     isError(fp == NULL, "Open out_file failed:%s",out_path);
@@ -63,7 +63,7 @@ OutLog()
     fprintf(fp,"Input:\t%s\n",in_path);
     fprintf(fp,"Output:\t%s\n\n",out_path);
     for(int i = 0; i < AKM[algo]; i++) {
-        fprintf(fp,"key %d:%s\n", i+1, keys[i]);
+        fprintf(fp,"key %d:%llu\n", i+1, bit_keys[i]);
     }
     fprintf(fp,"\nFile size:\t%dKB\n",total_bytes >> 10);
     fprintf(fp,"Run time:\t%fus\n",run_time);
@@ -104,8 +104,9 @@ CommandParsing(int argc, char* argv[])
             case '=':
                 out_path = argv[++i];
                 break;
-            case '+':
-                keys[k_flag++] = argv[++i];
+            case '-':
+                if(strcmp(argv[i], "--dec") == 0)
+                bit_keys[k_flag++] = Str2Bit64(argv[++i]);
                 break;
             default:
                 break;
@@ -113,7 +114,7 @@ CommandParsing(int argc, char* argv[])
     }
 
     if(mode == MODE_ENCODE && k_flag == 0) {
-            _64Bits_Random_Alphanumeric_Key_Generator();
+            KeyGenerator();
             k_flag = AKM[algo];
     }
     isError(k_flag < AKM[algo],"No enough Keys!", NULL);
@@ -121,28 +122,32 @@ CommandParsing(int argc, char* argv[])
 }
 
 static void
-_64Bits_Random_Alphanumeric_Key_Generator()
+KeyGenerator()
 {
     srand(time(NULL));
     while(k_flag < AKM[algo]){
- 
-        if(keys[k_flag] == NULL){
-            keys[k_flag] = (char *)malloc(9);
-            for(int i = 0; i < 8; i++)
-            {
-                int t = rand() % 3;
-                if(t == 0) 
-                    keys[k_flag][i] = rand()%10 + '0';
-                if(t == 1)
-                    keys[k_flag][i] = rand()%26 + 'a';
-                if(t == 2)
-                    keys[k_flag][i] = rand()%26 + 'A';
-            }
-            keys[k_flag][8]='\0';
+        for(int i = 0; i < 64 ;i++)
+        {
+            if(rand() % 2)
+                bit_set_1(&bit_keys[k_flag] ,i);
+            else bit_set_0(&bit_keys[k_flag] ,i);
         }
-        k_flag++;
-        
+        k_flag++; 
     }
+}
+
+static bit64
+Str2Bit64(char * str)
+{
+    if(str == NULL)
+        return 0;
+    bit64 ret = 0;
+    for(int i = 0; i < 20 && str[i] != '\0'; i++)
+    {
+        ret *= 10;
+        ret += str[i] - '0';
+    }
+    return ret;
 }
 
 static void

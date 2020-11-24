@@ -65,7 +65,7 @@ static double run_time;
 	                QueryPerformanceFrequency(&f);\
 	                dqFreq=(double)f.QuadPart;\
 	                QueryPerformanceCounter(&time_start);\
-                    RunFunction;\
+                    do{RunFunction;}while(0);\
 	                QueryPerformanceCounter(&time_over);\
 	                run_time=1000000*(time_over.QuadPart-time_start.QuadPart)/dqFreq; \
 
@@ -80,6 +80,6 @@ static char help_info[] = "Usage:\n" \
             "\t-m <modulu>\t\tthe modulu.\n"
             "\t-a <num>\t\tRead the file in <num>-byte alignment. (Filled with the character '$', when less than 16 bytes(128 bit))\n"
             "\t--init <file>\tInitial a rsa key pair <SK, PK, mod>(saved in <file>) and perfrom encode.\n\n" \
-            "Note:\n\tFor convenience, we dump all execution information into log.txt, regardless of the security.";
+            "Note:\n\tFor convenience, we dump all execution information into rsa_log.txt, regardless of the security.";
 
 #endif

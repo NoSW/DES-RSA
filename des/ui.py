@@ -59,17 +59,18 @@ def run():
         print(tk.messagebox.showerror(title='ERROR',message='Please select a algorithm'))
         return
     if len(key1.get()) == 0:
-        print(tk.messagebox.showwarning(title='WARNING',message='No input keys, and random alphanumeric key(s) may be generated.\nSee log.txt for details'))
+        print(tk.messagebox.showwarning(title='WARNING',message='No input keys, and random key(s) may be generated.\nSee des-log.txt for details'))
     keys = ''
     if(len(key1.get())!=0):
-        keys = keys + ' + ' + key1.get()
+        keys = keys + ' --dec ' + key1.get()
     if(len(key2.get())!=0):
-        keys = keys + ' + ' + key2.get()
+        keys = keys + ' --dec ' + key2.get()
     if(len(key3.get())!=0):
-        keys = keys + ' + ' + key3.get()
-    # $ des.exe  <in_path>  [mode] [algo] + [key1] + [key2] + [key3]
+        keys = keys + ' --dec ' + key3.get()
+    # $ des.exe  <in_path>  [mode] [algo] --dec [key1] --dec [key2] --dec [key3]
     for path_i in in_path:
-        os.system('des.exe'+' '+path_i+' '+mode.get()+' '+algo.get()+' '+keys)
+        os.system('des.exe {} {} {} {}'.format(path_i, mode.get(), algo.get(), keys))
+
     print(tk.messagebox.showinfo(title='INFO',message='Finished,and log had been saved in log.txt'))
     in_path.clear()
 

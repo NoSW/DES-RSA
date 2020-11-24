@@ -1,240 +1,1284 @@
-time:	2020.11.24-21:41:38
-Type:	ENCODE
-Algo:	0
-Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data1.txt
-Output:	./encoded/data1.txt
-
-key 1:0ujzsSbR
-
-File size:	1KB
-Run time:	2430.000000us
-Operating speed:	623B/ms
------------------------------------------
-time:	2020.11.24-21:41:38
-Type:	ENCODE
-Algo:	0
-Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data2.txt
-Output:	./encoded/data2.txt
-
-key 1:0ujzsSbR
-
-File size:	3KB
-Run time:	7456.200000us
-Operating speed:	559B/ms
------------------------------------------
-time:	2020.11.24-21:41:38
-Type:	ENCODE
-Algo:	0
-Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data3.txt
-Output:	./encoded/data3.txt
-
-key 1:0ujzsSbR
-
-File size:	2KB
-Run time:	4483.600000us
-Operating speed:	587B/ms
------------------------------------------
-time:	2020.11.24-21:41:38
-Type:	ENCODE
-Algo:	0
-Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data4.txt
-Output:	./encoded/data4.txt
-
-key 1:0ujzsSbR
-
-File size:	2KB
-Run time:	4210.100000us
-Operating speed:	544B/ms
------------------------------------------
-time:	2020.11.24-21:41:38
-Type:	ENCODE
-Algo:	0
-Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data5.txt
-Output:	./encoded/data5.txt
-
-key 1:0ujzsSbR
-
-File size:	5KB
-Run time:	10581.000000us
-Operating speed:	561B/ms
------------------------------------------
-time:	2020.11.24-21:41:38
-Type:	ENCODE
-Algo:	0
-Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data6.txt
-Output:	./encoded/data6.txt
-
-key 1:0ujzsSbR
-
-File size:	1KB
-Run time:	4568.200000us
-Operating speed:	495B/ms
------------------------------------------
-time:	2020.11.24-21:41:38
-Type:	ENCODE
-Algo:	0
-Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data7.txt
-Output:	./encoded/data7.txt
-
-key 1:0ujzsSbR
-
-File size:	1KB
-Run time:	3571.200000us
-Operating speed:	619B/ms
------------------------------------------
-time:	2020.11.24-21:41:38
+time:	2020.11.24-23:23:52
 Type:	ENCODE
 Algo:	0
 Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data8.txt
 Output:	./encoded/data8.txt
 
-key 1:0ujzsSbR
+key 1:1234567891234
 
 File size:	5KB
-Run time:	12357.900000us
-Operating speed:	471B/ms
+Run time:	11928.500000us
+Operating speed:	514B/ms
 -----------------------------------------
-time:	2020.11.24-21:41:38
-Type:	ENCODE
-Algo:	0
-Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data9.txt
-Output:	./encoded/data9.txt
-
-key 1:0ujzsSbR
-
-File size:	7KB
-Run time:	14369.700000us
-Operating speed:	544B/ms
------------------------------------------
-time:	2020.11.24-21:41:38
-Type:	ENCODE
-Algo:	0
-Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data10.txt
-Output:	./encoded/data10.txt
-
-key 1:0ujzsSbR
-
-File size:	2KB
-Run time:	4426.900000us
-Operating speed:	571B/ms
------------------------------------------
-time:	2020.11.24-21:42:24
-Type:	DECODE
-Algo:	0
-Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data1.txt
-Output:	./decoded/data1.txt
-
-key 1:0ujzsSbR
-
-File size:	1KB
-Run time:	2429.200000us
-Operating speed:	624B/ms
------------------------------------------
-time:	2020.11.24-21:42:24
-Type:	DECODE
-Algo:	0
-Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data2.txt
-Output:	./decoded/data2.txt
-
-key 1:0ujzsSbR
-
-File size:	3KB
-Run time:	7444.700000us
-Operating speed:	560B/ms
------------------------------------------
-time:	2020.11.24-21:42:24
-Type:	DECODE
-Algo:	0
-Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data3.txt
-Output:	./decoded/data3.txt
-
-key 1:0ujzsSbR
-
-File size:	2KB
-Run time:	4547.500000us
-Operating speed:	588B/ms
------------------------------------------
-time:	2020.11.24-21:42:24
-Type:	DECODE
-Algo:	0
-Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data4.txt
-Output:	./decoded/data4.txt
-
-key 1:0ujzsSbR
-
-File size:	2KB
-Run time:	4129.200000us
-Operating speed:	546B/ms
------------------------------------------
-time:	2020.11.24-21:42:24
-Type:	DECODE
-Algo:	0
-Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data5.txt
-Output:	./decoded/data5.txt
-
-key 1:0ujzsSbR
-
-File size:	5KB
-Run time:	10566.600000us
-Operating speed:	561B/ms
------------------------------------------
-time:	2020.11.24-21:42:24
-Type:	DECODE
-Algo:	0
-Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data6.txt
-Output:	./decoded/data6.txt
-
-key 1:0ujzsSbR
-
-File size:	1KB
-Run time:	3853.700000us
-Operating speed:	661B/ms
------------------------------------------
-time:	2020.11.24-21:42:24
-Type:	DECODE
-Algo:	0
-Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data7.txt
-Output:	./decoded/data7.txt
-
-key 1:0ujzsSbR
-
-File size:	1KB
-Run time:	3632.800000us
-Operating speed:	621B/ms
------------------------------------------
-time:	2020.11.24-21:42:24
+time:	2020.11.24-23:24:29
 Type:	DECODE
 Algo:	0
 Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data8.txt
 Output:	./decoded/data8.txt
 
-key 1:0ujzsSbR
+key 1:1234567891234
 
 File size:	5KB
-Run time:	14700.000000us
-Operating speed:	404B/ms
+Run time:	10802.100000us
+Operating speed:	566B/ms
 -----------------------------------------
-time:	2020.11.24-21:42:24
+time:	2020.11.24-23:26:22
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data1.txt
+Output:	./encoded/data1.txt
+
+key 1:11038754826364537177
+
+File size:	1KB
+Run time:	2489.200000us
+Operating speed:	623B/ms
+-----------------------------------------
+time:	2020.11.24-23:26:22
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data2.txt
+Output:	./encoded/data2.txt
+
+key 1:11038754826364537177
+
+File size:	3KB
+Run time:	7631.900000us
+Operating speed:	559B/ms
+-----------------------------------------
+time:	2020.11.24-23:26:22
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data3.txt
+Output:	./encoded/data3.txt
+
+key 1:11038754826364537177
+
+File size:	2KB
+Run time:	6875.800000us
+Operating speed:	391B/ms
+-----------------------------------------
+time:	2020.11.24-23:26:22
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data4.txt
+Output:	./encoded/data4.txt
+
+key 1:11038754826364537177
+
+File size:	2KB
+Run time:	4309.800000us
+Operating speed:	544B/ms
+-----------------------------------------
+time:	2020.11.24-23:26:22
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data5.txt
+Output:	./encoded/data5.txt
+
+key 1:11038754826364537177
+
+File size:	5KB
+Run time:	10879.700000us
+Operating speed:	561B/ms
+-----------------------------------------
+time:	2020.11.24-23:26:22
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data6.txt
+Output:	./encoded/data6.txt
+
+key 1:11038754826364537177
+
+File size:	1KB
+Run time:	3945.800000us
+Operating speed:	660B/ms
+-----------------------------------------
+time:	2020.11.24-23:26:22
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data7.txt
+Output:	./encoded/data7.txt
+
+key 1:11038754826364537177
+
+File size:	1KB
+Run time:	3695.800000us
+Operating speed:	619B/ms
+-----------------------------------------
+time:	2020.11.24-23:26:22
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data8.txt
+Output:	./encoded/data8.txt
+
+key 1:11038754826364537177
+
+File size:	5KB
+Run time:	11183.200000us
+Operating speed:	514B/ms
+-----------------------------------------
+time:	2020.11.24-23:26:23
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data9.txt
+Output:	./encoded/data9.txt
+
+key 1:11038754826364537177
+
+File size:	7KB
+Run time:	16169.000000us
+Operating speed:	476B/ms
+-----------------------------------------
+time:	2020.11.24-23:26:23
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data10.txt
+Output:	./encoded/data10.txt
+
+key 1:9251962520388655584
+
+File size:	2KB
+Run time:	4569.100000us
+Operating speed:	571B/ms
+-----------------------------------------
+time:	2020.11.24-23:27:20
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data1.txt
+Output:	./decoded/data1.txt
+
+key 1:1103875482636453717
+
+File size:	1KB
+Run time:	2488.700000us
+Operating speed:	624B/ms
+-----------------------------------------
+time:	2020.11.24-23:27:20
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data2.txt
+Output:	./decoded/data2.txt
+
+key 1:1103875482636453717
+
+File size:	3KB
+Run time:	7878.700000us
+Operating speed:	560B/ms
+-----------------------------------------
+time:	2020.11.24-23:27:20
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data3.txt
+Output:	./decoded/data3.txt
+
+key 1:1103875482636453717
+
+File size:	2KB
+Run time:	4601.600000us
+Operating speed:	588B/ms
+-----------------------------------------
+time:	2020.11.24-23:27:20
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data4.txt
+Output:	./decoded/data4.txt
+
+key 1:1103875482636453717
+
+File size:	2KB
+Run time:	4263.000000us
+Operating speed:	546B/ms
+-----------------------------------------
+time:	2020.11.24-23:27:20
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data5.txt
+Output:	./decoded/data5.txt
+
+key 1:1103875482636453717
+
+File size:	5KB
+Run time:	10905.900000us
+Operating speed:	561B/ms
+-----------------------------------------
+time:	2020.11.24-23:27:20
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data6.txt
+Output:	./decoded/data6.txt
+
+key 1:1103875482636453717
+
+File size:	1KB
+Run time:	3905.600000us
+Operating speed:	661B/ms
+-----------------------------------------
+time:	2020.11.24-23:27:20
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data7.txt
+Output:	./decoded/data7.txt
+
+key 1:1103875482636453717
+
+File size:	1KB
+Run time:	3688.800000us
+Operating speed:	621B/ms
+-----------------------------------------
+time:	2020.11.24-23:27:20
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data8.txt
+Output:	./decoded/data8.txt
+
+key 1:1103875482636453717
+
+File size:	5KB
+Run time:	11019.800000us
+Operating speed:	514B/ms
+-----------------------------------------
+time:	2020.11.24-23:27:20
 Type:	DECODE
 Algo:	0
 Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data9.txt
 Output:	./decoded/data9.txt
 
-key 1:0ujzsSbR
+key 1:1103875482636453717
 
 File size:	7KB
-Run time:	14433.600000us
+Run time:	14775.600000us
 Operating speed:	544B/ms
 -----------------------------------------
-time:	2020.11.24-21:42:24
+time:	2020.11.24-23:27:21
 Type:	DECODE
 Algo:	0
 Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data10.txt
 Output:	./decoded/data10.txt
 
-key 1:0ujzsSbR
+key 1:1103875482636453717
 
 File size:	2KB
-Run time:	4505.400000us
+Run time:	4584.900000us
 Operating speed:	572B/ms
+-----------------------------------------
+time:	2020.11.24-23:29:25
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data8.txt
+Output:	./encoded/data8.txt
+
+key 1:13234419773476699276
+
+File size:	5KB
+Run time:	11118.200000us
+Operating speed:	514B/ms
+-----------------------------------------
+time:	2020.11.24-23:29:25
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data9.txt
+Output:	./encoded/data9.txt
+
+key 1:13234419773476699276
+
+File size:	7KB
+Run time:	14911.200000us
+Operating speed:	544B/ms
+-----------------------------------------
+time:	2020.11.24-23:29:25
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data10.txt
+Output:	./encoded/data10.txt
+
+key 1:13234419773476699276
+
+File size:	2KB
+Run time:	4488.600000us
+Operating speed:	571B/ms
+-----------------------------------------
+time:	2020.11.24-23:29:58
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data8.txt
+Output:	./decoded/data8.txt
+
+key 1:1323441977347669927
+
+File size:	5KB
+Run time:	10978.000000us
+Operating speed:	566B/ms
+-----------------------------------------
+time:	2020.11.24-23:29:58
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data9.txt
+Output:	./decoded/data9.txt
+
+key 1:1323441977347669927
+
+File size:	7KB
+Run time:	17730.700000us
+Operating speed:	448B/ms
+-----------------------------------------
+time:	2020.11.24-23:29:58
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data10.txt
+Output:	./decoded/data10.txt
+
+key 1:1323441977347669927
+
+File size:	2KB
+Run time:	4400.500000us
+Operating speed:	572B/ms
+-----------------------------------------
+time:	2020.11.24-23:30:33
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data1.txt
+Output:	./encoded/data1.txt
+
+key 1:1323441977347669927
+
+File size:	1KB
+Run time:	2473.600000us
+Operating speed:	623B/ms
+-----------------------------------------
+time:	2020.11.24-23:30:47
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data1.txt
+Output:	./decoded/data1.txt
+
+key 1:1323441977347669927
+
+File size:	1KB
+Run time:	2426.800000us
+Operating speed:	624B/ms
+-----------------------------------------
+time:	2020.11.24-23:32:4
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data1.txt
+Output:	./encoded/data1.txt
+
+key 1:132129285854260055
+
+File size:	1KB
+Run time:	2861.300000us
+Operating speed:	623B/ms
+-----------------------------------------
+time:	2020.11.24-23:32:22
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data1.txt
+Output:	./decoded/data1.txt
+
+key 1:132129285854260055
+
+File size:	1KB
+Run time:	2488.000000us
+Operating speed:	624B/ms
+-----------------------------------------
+time:	2020.11.24-23:32:46
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data1.txt
+Output:	./encoded/data1.txt
+
+key 1:132129285854260055
+
+File size:	1KB
+Run time:	2856.000000us
+Operating speed:	623B/ms
+-----------------------------------------
+time:	2020.11.24-23:32:46
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data2.txt
+Output:	./encoded/data2.txt
+
+key 1:132129285854260055
+
+File size:	3KB
+Run time:	7612.300000us
+Operating speed:	559B/ms
+-----------------------------------------
+time:	2020.11.24-23:32:46
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data3.txt
+Output:	./encoded/data3.txt
+
+key 1:132129285854260055
+
+File size:	2KB
+Run time:	4656.500000us
+Operating speed:	587B/ms
+-----------------------------------------
+time:	2020.11.24-23:32:46
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data4.txt
+Output:	./encoded/data4.txt
+
+key 1:132129285854260055
+
+File size:	2KB
+Run time:	4367.000000us
+Operating speed:	544B/ms
+-----------------------------------------
+time:	2020.11.24-23:32:46
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data5.txt
+Output:	./encoded/data5.txt
+
+key 1:132129285854260055
+
+File size:	5KB
+Run time:	10866.600000us
+Operating speed:	561B/ms
+-----------------------------------------
+time:	2020.11.24-23:32:46
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data6.txt
+Output:	./encoded/data6.txt
+
+key 1:132129285854260055
+
+File size:	1KB
+Run time:	3898.000000us
+Operating speed:	660B/ms
+-----------------------------------------
+time:	2020.11.24-23:32:46
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data7.txt
+Output:	./encoded/data7.txt
+
+key 1:132129285854260055
+
+File size:	1KB
+Run time:	3636.700000us
+Operating speed:	619B/ms
+-----------------------------------------
+time:	2020.11.24-23:32:46
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data8.txt
+Output:	./encoded/data8.txt
+
+key 1:132129285854260055
+
+File size:	5KB
+Run time:	11013.100000us
+Operating speed:	514B/ms
+-----------------------------------------
+time:	2020.11.24-23:32:46
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data9.txt
+Output:	./encoded/data9.txt
+
+key 1:132129285854260055
+
+File size:	7KB
+Run time:	14740.900000us
+Operating speed:	544B/ms
+-----------------------------------------
+time:	2020.11.24-23:32:46
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data10.txt
+Output:	./encoded/data10.txt
+
+key 1:132129285854260055
+
+File size:	2KB
+Run time:	4532.400000us
+Operating speed:	571B/ms
+-----------------------------------------
+time:	2020.11.24-23:32:54
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data1.txt
+Output:	./decoded/data1.txt
+
+key 1:132129285854260055
+
+File size:	1KB
+Run time:	2540.500000us
+Operating speed:	624B/ms
+-----------------------------------------
+time:	2020.11.24-23:32:54
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data2.txt
+Output:	./decoded/data2.txt
+
+key 1:132129285854260055
+
+File size:	3KB
+Run time:	7561.800000us
+Operating speed:	560B/ms
+-----------------------------------------
+time:	2020.11.24-23:32:54
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data3.txt
+Output:	./decoded/data3.txt
+
+key 1:132129285854260055
+
+File size:	2KB
+Run time:	4720.200000us
+Operating speed:	588B/ms
+-----------------------------------------
+time:	2020.11.24-23:32:54
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data4.txt
+Output:	./decoded/data4.txt
+
+key 1:132129285854260055
+
+File size:	2KB
+Run time:	4250.300000us
+Operating speed:	546B/ms
+-----------------------------------------
+time:	2020.11.24-23:32:54
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data5.txt
+Output:	./decoded/data5.txt
+
+key 1:132129285854260055
+
+File size:	5KB
+Run time:	10781.900000us
+Operating speed:	561B/ms
+-----------------------------------------
+time:	2020.11.24-23:32:54
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data6.txt
+Output:	./decoded/data6.txt
+
+key 1:132129285854260055
+
+File size:	1KB
+Run time:	3915.900000us
+Operating speed:	661B/ms
+-----------------------------------------
+time:	2020.11.24-23:32:54
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data7.txt
+Output:	./decoded/data7.txt
+
+key 1:132129285854260055
+
+File size:	1KB
+Run time:	3648.700000us
+Operating speed:	621B/ms
+-----------------------------------------
+time:	2020.11.24-23:32:54
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data8.txt
+Output:	./decoded/data8.txt
+
+key 1:132129285854260055
+
+File size:	5KB
+Run time:	10998.200000us
+Operating speed:	566B/ms
+-----------------------------------------
+time:	2020.11.24-23:32:54
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data9.txt
+Output:	./decoded/data9.txt
+
+key 1:132129285854260055
+
+File size:	7KB
+Run time:	14606.300000us
+Operating speed:	544B/ms
+-----------------------------------------
+time:	2020.11.24-23:32:55
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data10.txt
+Output:	./decoded/data10.txt
+
+key 1:132129285854260055
+
+File size:	2KB
+Run time:	4465.500000us
+Operating speed:	572B/ms
+-----------------------------------------
+time:	2020.11.24-23:33:15
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data1.txt
+Output:	./encoded/data1.txt
+
+key 1:9930055007279382759
+
+File size:	1KB
+Run time:	2728.800000us
+Operating speed:	623B/ms
+-----------------------------------------
+time:	2020.11.24-23:33:15
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data2.txt
+Output:	./encoded/data2.txt
+
+key 1:9930055007279382759
+
+File size:	3KB
+Run time:	7513.500000us
+Operating speed:	559B/ms
+-----------------------------------------
+time:	2020.11.24-23:33:15
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data3.txt
+Output:	./encoded/data3.txt
+
+key 1:9930055007279382759
+
+File size:	2KB
+Run time:	4570.600000us
+Operating speed:	587B/ms
+-----------------------------------------
+time:	2020.11.24-23:33:15
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data4.txt
+Output:	./encoded/data4.txt
+
+key 1:9930055007279382759
+
+File size:	2KB
+Run time:	4290.500000us
+Operating speed:	544B/ms
+-----------------------------------------
+time:	2020.11.24-23:33:15
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data5.txt
+Output:	./encoded/data5.txt
+
+key 1:9930055007279382759
+
+File size:	5KB
+Run time:	10934.900000us
+Operating speed:	561B/ms
+-----------------------------------------
+time:	2020.11.24-23:33:15
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data6.txt
+Output:	./encoded/data6.txt
+
+key 1:9930055007279382759
+
+File size:	1KB
+Run time:	4455.200000us
+Operating speed:	495B/ms
+-----------------------------------------
+time:	2020.11.24-23:33:15
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data7.txt
+Output:	./encoded/data7.txt
+
+key 1:9930055007279382759
+
+File size:	1KB
+Run time:	3689.900000us
+Operating speed:	619B/ms
+-----------------------------------------
+time:	2020.11.24-23:33:15
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data8.txt
+Output:	./encoded/data8.txt
+
+key 1:9930055007279382759
+
+File size:	5KB
+Run time:	10842.300000us
+Operating speed:	565B/ms
+-----------------------------------------
+time:	2020.11.24-23:33:15
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data9.txt
+Output:	./encoded/data9.txt
+
+key 1:9930055007279382759
+
+File size:	7KB
+Run time:	14634.600000us
+Operating speed:	544B/ms
+-----------------------------------------
+time:	2020.11.24-23:33:15
+Type:	ENCODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data10.txt
+Output:	./encoded/data10.txt
+
+key 1:9930055007279382759
+
+File size:	2KB
+Run time:	4548.800000us
+Operating speed:	571B/ms
+-----------------------------------------
+time:	2020.11.24-23:34:14
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data1.txt
+Output:	./decoded/data1.txt
+
+key 1:9930055007279382759
+
+File size:	1KB
+Run time:	2468.800000us
+Operating speed:	624B/ms
+-----------------------------------------
+time:	2020.11.24-23:34:14
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data2.txt
+Output:	./decoded/data2.txt
+
+key 1:9930055007279382759
+
+File size:	3KB
+Run time:	7558.900000us
+Operating speed:	560B/ms
+-----------------------------------------
+time:	2020.11.24-23:34:14
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data3.txt
+Output:	./decoded/data3.txt
+
+key 1:9930055007279382759
+
+File size:	2KB
+Run time:	4574.700000us
+Operating speed:	588B/ms
+-----------------------------------------
+time:	2020.11.24-23:34:14
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data4.txt
+Output:	./decoded/data4.txt
+
+key 1:9930055007279382759
+
+File size:	2KB
+Run time:	4235.400000us
+Operating speed:	546B/ms
+-----------------------------------------
+time:	2020.11.24-23:34:14
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data5.txt
+Output:	./decoded/data5.txt
+
+key 1:9930055007279382759
+
+File size:	5KB
+Run time:	10766.500000us
+Operating speed:	561B/ms
+-----------------------------------------
+time:	2020.11.24-23:34:14
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data6.txt
+Output:	./decoded/data6.txt
+
+key 1:9930055007279382759
+
+File size:	1KB
+Run time:	3875.100000us
+Operating speed:	661B/ms
+-----------------------------------------
+time:	2020.11.24-23:34:14
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data7.txt
+Output:	./decoded/data7.txt
+
+key 1:9930055007279382759
+
+File size:	1KB
+Run time:	3636.800000us
+Operating speed:	621B/ms
+-----------------------------------------
+time:	2020.11.24-23:34:14
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data8.txt
+Output:	./decoded/data8.txt
+
+key 1:9930055007279382759
+
+File size:	5KB
+Run time:	10857.700000us
+Operating speed:	566B/ms
+-----------------------------------------
+time:	2020.11.24-23:34:14
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data9.txt
+Output:	./decoded/data9.txt
+
+key 1:9930055007279382759
+
+File size:	7KB
+Run time:	14579.000000us
+Operating speed:	544B/ms
+-----------------------------------------
+time:	2020.11.24-23:34:14
+Type:	DECODE
+Algo:	0
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data10.txt
+Output:	./decoded/data10.txt
+
+key 1:9930055007279382759
+
+File size:	2KB
+Run time:	4492.600000us
+Operating speed:	572B/ms
+-----------------------------------------
+time:	2020.11.24-23:35:54
+Type:	ENCODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data1.txt
+Output:	./encoded/data1.txt
+
+key 1:6878924548587331561
+key 2:7523966183650754807
+key 3:17310614521566254085
+
+File size:	1KB
+Run time:	8179.800000us
+Operating speed:	155B/ms
+-----------------------------------------
+time:	2020.11.24-23:35:54
+Type:	ENCODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data2.txt
+Output:	./encoded/data2.txt
+
+key 1:6878924548587331561
+key 2:7523966183650754807
+key 3:17310614521566254085
+
+File size:	3KB
+Run time:	25784.600000us
+Operating speed:	156B/ms
+-----------------------------------------
+time:	2020.11.24-23:35:55
+Type:	ENCODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data3.txt
+Output:	./encoded/data3.txt
+
+key 1:6878924548587331561
+key 2:7523966183650754807
+key 3:17310614521566254085
+
+File size:	2KB
+Run time:	15005.700000us
+Operating speed:	156B/ms
+-----------------------------------------
+time:	2020.11.24-23:35:55
+Type:	ENCODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data4.txt
+Output:	./encoded/data4.txt
+
+key 1:17160548072672333504
+key 2:6714146090918106423
+key 3:17748331553534970771
+
+File size:	2KB
+Run time:	14106.300000us
+Operating speed:	155B/ms
+-----------------------------------------
+time:	2020.11.24-23:35:55
+Type:	ENCODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data5.txt
+Output:	./encoded/data5.txt
+
+key 1:17160548072672333504
+key 2:6714146090918106423
+key 3:17748331553534970771
+
+File size:	5KB
+Run time:	40179.600000us
+Operating speed:	140B/ms
+-----------------------------------------
+time:	2020.11.24-23:35:55
+Type:	ENCODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data6.txt
+Output:	./encoded/data6.txt
+
+key 1:17160548072672333504
+key 2:6714146090918106423
+key 3:17748331553534970771
+
+File size:	1KB
+Run time:	12964.100000us
+Operating speed:	165B/ms
+-----------------------------------------
+time:	2020.11.24-23:35:55
+Type:	ENCODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data7.txt
+Output:	./encoded/data7.txt
+
+key 1:17160548072672333504
+key 2:6714146090918106423
+key 3:17748331553534970771
+
+File size:	1KB
+Run time:	12005.400000us
+Operating speed:	154B/ms
+-----------------------------------------
+time:	2020.11.24-23:35:55
+Type:	ENCODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data8.txt
+Output:	./encoded/data8.txt
+
+key 1:17160548072672333504
+key 2:6714146090918106423
+key 3:17748331553534970771
+
+File size:	5KB
+Run time:	36157.800000us
+Operating speed:	157B/ms
+-----------------------------------------
+time:	2020.11.24-23:35:55
+Type:	ENCODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data9.txt
+Output:	./encoded/data9.txt
+
+key 1:17160548072672333504
+key 2:6714146090918106423
+key 3:17748331553534970771
+
+File size:	7KB
+Run time:	49408.800000us
+Operating speed:	155B/ms
+-----------------------------------------
+time:	2020.11.24-23:35:55
+Type:	ENCODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data10.txt
+Output:	./encoded/data10.txt
+
+key 1:17160548072672333504
+key 2:6714146090918106423
+key 3:17748331553534970771
+
+File size:	2KB
+Run time:	14670.400000us
+Operating speed:	163B/ms
+-----------------------------------------
+time:	2020.11.24-23:36:34
+Type:	DECODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data1.txt
+Output:	./decoded/data1.txt
+
+key 1:17160548072672333504
+key 2:6714146090918106423
+key 3:17748331553534970771
+
+File size:	1KB
+Run time:	8093.700000us
+Operating speed:	156B/ms
+-----------------------------------------
+time:	2020.11.24-23:36:34
+Type:	DECODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data2.txt
+Output:	./decoded/data2.txt
+
+key 1:17160548072672333504
+key 2:6714146090918106423
+key 3:17748331553534970771
+
+File size:	3KB
+Run time:	25134.500000us
+Operating speed:	156B/ms
+-----------------------------------------
+time:	2020.11.24-23:36:34
+Type:	DECODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data3.txt
+Output:	./decoded/data3.txt
+
+key 1:17160548072672333504
+key 2:6714146090918106423
+key 3:17748331553534970771
+
+File size:	2KB
+Run time:	15089.200000us
+Operating speed:	156B/ms
+-----------------------------------------
+time:	2020.11.24-23:36:34
+Type:	DECODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data4.txt
+Output:	./decoded/data4.txt
+
+key 1:17160548072672333504
+key 2:6714146090918106423
+key 3:17748331553534970771
+
+File size:	2KB
+Run time:	14084.100000us
+Operating speed:	156B/ms
+-----------------------------------------
+time:	2020.11.24-23:36:34
+Type:	DECODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data5.txt
+Output:	./decoded/data5.txt
+
+key 1:17160548072672333504
+key 2:6714146090918106423
+key 3:17748331553534970771
+
+File size:	5KB
+Run time:	35856.200000us
+Operating speed:	160B/ms
+-----------------------------------------
+time:	2020.11.24-23:36:34
+Type:	DECODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data6.txt
+Output:	./decoded/data6.txt
+
+key 1:17160548072672333504
+key 2:6714146090918106423
+key 3:17748331553534970771
+
+File size:	1KB
+Run time:	12858.300000us
+Operating speed:	165B/ms
+-----------------------------------------
+time:	2020.11.24-23:36:34
+Type:	DECODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data7.txt
+Output:	./decoded/data7.txt
+
+key 1:17160548072672333504
+key 2:6714146090918106423
+key 3:17748331553534970771
+
+File size:	1KB
+Run time:	11983.200000us
+Operating speed:	169B/ms
+-----------------------------------------
+time:	2020.11.24-23:36:34
+Type:	DECODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data8.txt
+Output:	./decoded/data8.txt
+
+key 1:17160548072672333504
+key 2:6714146090918106423
+key 3:17748331553534970771
+
+File size:	5KB
+Run time:	36140.800000us
+Operating speed:	157B/ms
+-----------------------------------------
+time:	2020.11.24-23:36:34
+Type:	DECODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data9.txt
+Output:	./decoded/data9.txt
+
+key 1:17160548072672333504
+key 2:6714146090918106423
+key 3:17748331553534970771
+
+File size:	7KB
+Run time:	48696.000000us
+Operating speed:	158B/ms
+-----------------------------------------
+time:	2020.11.24-23:36:35
+Type:	DECODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data10.txt
+Output:	./decoded/data10.txt
+
+key 1:17160548072672333504
+key 2:6714146090918106423
+key 3:17748331553534970771
+
+File size:	2KB
+Run time:	14812.300000us
+Operating speed:	163B/ms
+-----------------------------------------
+time:	2020.11.24-23:52:29
+Type:	ENCODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data6.txt
+Output:	./encoded/data6.txt
+
+key 1:9343719023489197332
+key 2:5764956686741184199
+key 3:17102417108420450084
+
+File size:	1KB
+Run time:	12568.300000us
+Operating speed:	165B/ms
+-----------------------------------------
+time:	2020.11.24-23:52:29
+Type:	ENCODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data7.txt
+Output:	./encoded/data7.txt
+
+key 1:9343719023489197332
+key 2:5764956686741184199
+key 3:17102417108420450084
+
+File size:	1KB
+Run time:	11831.600000us
+Operating speed:	168B/ms
+-----------------------------------------
+time:	2020.11.24-23:52:29
+Type:	ENCODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data8.txt
+Output:	./encoded/data8.txt
+
+key 1:9343719023489197332
+key 2:5764956686741184199
+key 3:17102417108420450084
+
+File size:	5KB
+Run time:	35533.700000us
+Operating speed:	161B/ms
+-----------------------------------------
+time:	2020.11.24-23:52:29
+Type:	ENCODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data9.txt
+Output:	./encoded/data9.txt
+
+key 1:9343719023489197332
+key 2:5764956686741184199
+key 3:17102417108420450084
+
+File size:	7KB
+Run time:	48002.300000us
+Operating speed:	158B/ms
+-----------------------------------------
+time:	2020.11.24-23:52:29
+Type:	ENCODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/data/data10.txt
+Output:	./encoded/data10.txt
+
+key 1:9343719023489197332
+key 2:5764956686741184199
+key 3:17102417108420450084
+
+File size:	2KB
+Run time:	15351.400000us
+Operating speed:	152B/ms
+-----------------------------------------
+time:	2020.11.24-23:53:3
+Type:	DECODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data6.txt
+Output:	./decoded/data6.txt
+
+key 1:9343719023489197332
+key 2:5764956686741184199
+key 3:17102417108420450084
+
+File size:	1KB
+Run time:	12561.400000us
+Operating speed:	165B/ms
+-----------------------------------------
+time:	2020.11.24-23:53:3
+Type:	DECODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data7.txt
+Output:	./decoded/data7.txt
+
+key 1:9343719023489197332
+key 2:5764956686741184199
+key 3:17102417108420450084
+
+File size:	1KB
+Run time:	11892.000000us
+Operating speed:	169B/ms
+-----------------------------------------
+time:	2020.11.24-23:53:3
+Type:	DECODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data8.txt
+Output:	./decoded/data8.txt
+
+key 1:9343719023489197332
+key 2:5764956686741184199
+key 3:17102417108420450084
+
+File size:	5KB
+Run time:	35569.700000us
+Operating speed:	161B/ms
+-----------------------------------------
+time:	2020.11.24-23:53:3
+Type:	DECODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data9.txt
+Output:	./decoded/data9.txt
+
+key 1:9343719023489197332
+key 2:5764956686741184199
+key 3:17102417108420450084
+
+File size:	7KB
+Run time:	47830.800000us
+Operating speed:	162B/ms
+-----------------------------------------
+time:	2020.11.24-23:53:3
+Type:	DECODE
+Algo:	1
+Input:	C:/Users/LLQ/Desktop/DES-RSA/des/encoded/data10.txt
+Output:	./decoded/data10.txt
+
+key 1:9343719023489197332
+key 2:5764956686741184199
+key 3:17102417108420450084
+
+File size:	2KB
+Run time:	14471.500000us
+Operating speed:	163B/ms
 -----------------------------------------

@@ -67,13 +67,13 @@ def run():
         save_dir = "result\\result{}(decode)".format(index_dir)
     os.system("mkdir {}\\des-out".format(save_dir))
     """
-    For each file: $ .\\des\\des.exe  <in_file>  <e>   0  + <key> = .\\result\\result_i\\des-out\\filename
+    For each file: $ .\\des\\des.exe  <in_file>  <e>   0  --del <key> = .\\result\\result_i\\des-out\\filename
     For des key:   $ .\\rsa\\rsa.exe -d <data(dec)> --init -o .\\result\\result_i\\rsa-out.txt
     ,or
-    For each file: $ .\\des\\des.exe  <in_file>  <e>   0  + <key> = .\\result\\result_i\\des-out\\filename
+    For each file: $ .\\des\\des.exe  <in_file>  <e>   0  --dec <key> = .\\result\\result_i\\des-out\\filename
     For des key:   $ .\\rsa\\rsa.exe -d <data(dec)> -p <PK> -m <Module>  -o .\\result\\result_i\\rsa-out.txt
     ,or
-    For each file: $ .\\des\\des.exe  <in_file>  <e>   0  + <key> = .\\result\\result_i\\des-out\\filename
+    For each file: $ .\\des\\des.exe  <in_file>  <e>   0  --dec <key> = .\\result\\result_i\\des-out\\filename
     For des key:   $ .\\rsa\\rsa.exe -d <data(dec)> -s <SK> -m <Module>  -o .\\result\\result_i\\rsa-out.txt
     """
     # Run RSA
@@ -99,7 +99,7 @@ def run():
     print("Running DES ....")
     for path_i in in_path:
         fn = path_i.split('/')[-1]
-        os.system(".\\des\\des.exe {} {} 0 + {} = {}\\des-out\\{}".format(path_i, mode.get(), str_key, save_dir, fn))
+        os.system(".\\des\\des.exe {} {} 0 --dec {} = {}\\des-out\\{}".format(path_i, mode.get(), str_key, save_dir, fn))
     
     os.system("move des-log.txt {}\\".format(save_dir))
     print(tk.messagebox.showinfo(title='INFO',message='Finished,and log had been saved in des-log.txt'))
