@@ -54,7 +54,7 @@ OutLog()
     // get current time
     getCurrentTime();
     // Print log
-    fp = fopen("log.txt","a");
+    fp = fopen("des-log.txt","a");
     fprintf(fp,"time:\t%s\n",curtime);
     if(mode == MODE_ENCODE)
         fprintf(fp,"Type:\tENCODE\nAlgo:\t%d\n",algo);

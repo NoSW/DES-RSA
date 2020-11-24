@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "chrono": "c",
+        "random": "c",
+        "limits": "c",
+        "valarray": "c",
+        "*.ipp": "cpp"
+    },
+    "cSpell.words": [
+        "modulu"
+    ]
+}

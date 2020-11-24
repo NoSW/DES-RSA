@@ -1,7 +1,7 @@
 #ifndef _DES_H_
 #define _DES_H_
 
-#define ROUNDTIMES 8
+#define ROUNDTIMES 16
 #define PACKETLENGTH 64
 #define MODE_ENCODE 0
 #define MODE_DECODE 1
@@ -45,9 +45,9 @@ static void Des2or3(bit64* out, bit64* in, bit64* key, int Algo_t, int mode);
 void Des(bit64* out, bit64 *in, char** key, int total_bytes, int Algo_t ,int mode);
 
 // bit operations
-#define bit_set_0(data,n) *(data) &= (~((bit64)(0x1) << ((n)&0x3f)))
-#define bit_set_1(data,n) *(data) |= ((bit64)(0x1) << ((n)&0x3f))
-#define get_bit_n(data, n) !!(((data) >> ((n)&0x3f)) & 0x1)
+#define bit_set_0(data,n) *data &= (~((bit64)(0x1) << (n&0x3f)))
+#define bit_set_1(data,n) *data |= ((bit64)(0x1) << (n&0x3f))
+#define get_bit_n(data, n) !!((data >> (n&0x3f)) & 0x1)
 
 // subkeys[]
 static bit48 subkeys[16];

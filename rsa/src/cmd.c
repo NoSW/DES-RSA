@@ -34,8 +34,6 @@ OnePacket()
     else fprintf(fp,"Type:\t\t\tDECODE\n");
     fputs("Original Data:\t", fp);
     bit128_print(cmd_rsa[RSA_OnePacket], P_DEC, fp);
-    fputs("\nResult:\t\t\t", fp);
-    bit128_print(temp_out_packet, P_DEC, fp);
     if(cmd_rsa[RSA_INIT] == 1)
     {   
         fputs("\nModule:\t\t\t", fp);
@@ -45,6 +43,8 @@ OnePacket()
         fputs("\nPublic Key:\t\t", fp);
         bit128_print(cmd_rsa[RSA_E], P_DEC, fp);
     }
+    fputs("\nResult:", fp);
+    bit128_print(temp_out_packet, P_DEC, fp);
     return 0;
 }
 
