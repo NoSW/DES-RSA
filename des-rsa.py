@@ -95,12 +95,10 @@ def run():
         str_key = des_key.get()
 
     # Run DES
-    print("str_key", str_key)
-    print("Running DES ....")
 
+    print("Running DES ....")
     for path_i in in_path:
         fn = path_i.split('/')[-1]
-        print(".\\des\\des.exe {} {} 0 + {} = {}\\des-out\\{}".format(path_i, mode.get(), str_key, save_dir, fn))
         os.system(".\\des\\des.exe {} {} 0 + {} = {}\\des-out\\{}".format(path_i, mode.get(), str_key, save_dir, fn))
     
     os.system("move des-log.txt {}\\".format(save_dir))
