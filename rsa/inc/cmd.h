@@ -19,7 +19,8 @@ enum{
     RSA_D,
     RSA_K,
     RSA_INIT,
-    RSA_SPEC,
+    RSA_SPEC, //Non-INIT
+    RSA_OnePacket // a packet data
 };
 enum{
     PATH_IN = 0,
@@ -31,10 +32,11 @@ enum{
     MODE_STATUS = 0,
     MODE_READ_BIT,
     MODE_WRITE_BIT,
+    MODE_OnePacket,
 };
-static bit128 cmd_rsa[9] = {0};
+static bit128 cmd_rsa[10] = {0};
 static char* cmd_path[9] = {NULL};
-static bit128 cmd_mode[3];
+static bit128 cmd_mode[4];
 static bit128 cmd_in[MAX_BUFFER] = {0};
 static bit128 cmd_out[MAX_BUFFER] = {0};
 static bit64 bit64_buffer[MAX_BUFFER] = {0};
@@ -48,6 +50,7 @@ static int CommandParsing(int argc, char* argv[]);
 static bit128 Str2Bit128(char *);
 static int ReadData();
 static int WriteData();
+static int OnePacket();
 static int Check();
 static void getCurrentTime();
 static void OutLog();
@@ -70,6 +73,7 @@ static char help_info[] = "Usage:\n" \
             "\trsa.exe [option1] [option2] ... \n"\
             "\nOptions:\n"\
             "\t-i <path>\t\tinput a file.(no more than 4 MB)\n" \
+            "\t-d <data(dec)>\t\tinput Decimal data.(no more than 10^37)\n" \
             "\t-o <path>\t\tthe out file(the default is './out/out-filename'.\n" \
             "\t-s <key>\t\tthe Secret Key.\n"
             "\t-p <key>\t\tthe Public Key.\n"

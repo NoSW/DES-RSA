@@ -6,6 +6,13 @@ run(int argc, char* argv[])
     if(CommandParsing(argc, argv) != 0)
         exit(1);
 
+    // 1.Encode/Decode one packet data and dump result into 'cmd_path[PATH_OUT]'
+    if(cmd_mode[MODE_OnePacket] == 1)
+        return OnePacket();
+
+    // 2. Encode/Decode data from a file, 
+    // and dump result into 'cmd_path[PATH_OUT]',
+    // and save the running record to 'rsa_log.txt'
     ReadData();
     Check();
     Counter( for(int i = 0; i < packet; i++){
@@ -14,13 +21,40 @@ run(int argc, char* argv[])
     OutLog();
     return total_bytes/(int)(run_time/1000);
 }
+
+static int
+OnePacket()
+{
+    bit128 temp_out_packet = 0;
+    FILE* fp = fopen(cmd_path[PATH_OUT], "w");
+    isError(fp==NULL, "ERROR: Can't create file: %s\n", cmd_path[PATH_OUT]);
+    Rsa(&temp_out_packet, cmd_rsa[RSA_OnePacket], cmd_rsa[RSA_K], cmd_rsa[RSA_N]);
+    if(cmd_mode[MODE_STATUS] == MODE_ENCODE)
+        fprintf(fp,"Type:\t\t\tENCODE\n");
+    else fprintf(fp,"Type:\t\t\tDECODE\n");
+    fputs("Original Data:\t", fp);
+    bit128_print(cmd_rsa[RSA_OnePacket], P_DEC, fp);
+    fputs("\nResult:\t\t\t", fp);
+    bit128_print(temp_out_packet, P_DEC, fp);
+    if(cmd_rsa[RSA_INIT] == 1)
+    {   
+        fputs("\nModule:\t\t\t", fp);
+        bit128_print(cmd_rsa[RSA_N], P_DEC, fp);
+        fputs("\nSecret Key:\t\t", fp);
+        bit128_print(cmd_rsa[RSA_D], P_DEC, fp);
+        fputs("\nPublic Key:\t\t", fp);
+        bit128_print(cmd_rsa[RSA_E], P_DEC, fp);
+    }
+    return 0;
+}
+
 static int
 Check()
 {
  // Scanning for over n
     for(int i = 0; i < packet; i++){
         while(cmd_in[i] >= cmd_rsa[RSA_N])          
-        {PRINT_BIT128_DEC(cmd_rsa[RSA_N]);
+        {
             if(cmd_rsa[RSA_INIT] == 1)
             {
                 bit128 old_n = cmd_rsa[RSA_N];
@@ -43,9 +77,9 @@ ReadData()
 
     int is_padding = (total_bytes%(16/cmd_mode[MODE_READ_BIT]));
     packet = total_bytes/(16/cmd_mode[MODE_READ_BIT]) + !!is_padding;
-    PRINT_INT(total_bytes)
-    PRINT_BIT128_DEC(cmd_mode[MODE_READ_BIT])
-    PRINT_BIT128_DEC(cmd_mode[MODE_STATUS])
+    PRINT_INT(total_bytes);
+    PRINT_BIT128_DEC(cmd_mode[MODE_READ_BIT]);
+    PRINT_BIT128_DEC(cmd_mode[MODE_STATUS]);
     // 0x24, 0010 0100 , '$'
     if(is_padding)
         for(int i = cmd_mode[MODE_READ_BIT]; i < 16; i++)
@@ -100,6 +134,12 @@ CommandParsing(int argc, char* argv[])
                 case 'i':
                     cmd_path[PATH_IN] = argv[++i];
                     break;
+                case 'd':
+                    cmd_rsa[RSA_OnePacket] = Str2Bit128(argv[++i]);
+                    cmd_mode[MODE_OnePacket] = 1;
+                    cmd_path[PATH_OUT] = (char*)malloc(512);
+                    sprintf(cmd_path[PATH_OUT],"./out/out-%s.txt",argv[i]);
+                    break;
                 case 'o':
                     cmd_path[PATH_OUT] = argv[++i];
                     break;
@@ -117,18 +157,22 @@ CommandParsing(int argc, char* argv[])
             }
         }
     }
-    if(cmd_path[PATH_IN] == NULL)
-        isError(1, "ERROR: Initial a key pair? Use your key?\n", NULL);
-
+    // Check cmd
     if(cmd_rsa[RSA_INIT] == cmd_rsa[RSA_SPEC])
         isError(1, "ERROR: Initial a key pair? Use your key?\n", NULL);
 
+    if(cmd_mode[MODE_OnePacket] == 1)
+        return 0;
+    // Input file
+    if(cmd_path[PATH_IN] == NULL)
+        isError(1, "ERROR: Initial a key pair? Use your key?\n", NULL);
+    //Output file
     if(cmd_path[PATH_OUT] == NULL)
     {
         cmd_path[PATH_OUT] = (char*)malloc(512);
         sprintf(cmd_path[PATH_OUT],"./out/out-%s",getFileName(cmd_path[PATH_IN]));
     }
-
+    //Output Keys
     if(cmd_path[PATH_OUT_KEY] == NULL)
     {
         cmd_path[PATH_OUT_KEY] = (char*)malloc(512);

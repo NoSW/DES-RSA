@@ -167,10 +167,8 @@ bit128_gcd(bit128 n, bit128 b, bit128* inverse)
 
 }
 
-/*
-*   parity is NT_ODD or NT_EVEN or NT_RAND
-*   flag is NT_BIG or NT_RAND
-*/
+//   'parity': NT_ODD, NT_EVEN, NT_RAND
+//   'flag': NT_BIG, NT_RAND
 bit128 
 BigIntegerGenerator(int n_bits, int parity, int flag)
 {
@@ -340,6 +338,7 @@ MillerRabinPrimalityTest(bit128 n)
 }
 
 //  Print bit128 in bin/dec/hex format to terminal or file
+// Flag: P_HEX, P_DEC, P_BIN
 char * 
 bit128_print(bit128 n, int flag, FILE *fp)
 {
@@ -349,7 +348,7 @@ bit128_print(bit128 n, int flag, FILE *fp)
         return NULL;
   }
 
-  char str[40] = {0}; // log10(1 << 128) + '\0'
+  char str[128] = {0}; // log10(1 << 128) + '\0'
   char *s = str + sizeof(str) - 1; // start at the end
   while (n != 0) {
 	if (s == str)
