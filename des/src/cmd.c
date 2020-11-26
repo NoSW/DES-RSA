@@ -37,8 +37,10 @@ run(int argc, char* argv[])
     // Call program and calculate running time
     Counter(Des(out_buff,in_buff, bit_keys, total_bytes, algo, mode);)
     // Write the results
-    fp = fopen(out_path,"wb");
+    fp = fopen(out_path,"wb+");
     isError(fp == NULL, "Open out_file failed:%s",out_path);
+    if(header)
+        fwrite(header,1,80,fp);
     fwrite(out_buff,1,total_bytes-(total_bytes%8)+8*(!!(total_bytes%8)),fp);
     fclose(fp);
     // If you randomly generate a set of simple alphanumeric keys,
@@ -76,6 +78,7 @@ static void
 CommandParsing(int argc, char* argv[])
 {
     int k_flag = 0;
+    header = NULL;
     for(int i = 2; i < argc; i++)
     {
         if(argv[i] != NULL)
@@ -106,7 +109,9 @@ CommandParsing(int argc, char* argv[])
                 break;
             case '-':
                 if(strcmp(argv[i], "--dec") == 0)
-                bit_keys[k_flag++] = Str2Bit64(argv[++i]);
+                    bit_keys[k_flag++] = Str2Bit64(argv[++i]);
+                else if(strcmp(argv[i], "--head") == 0)
+                    header = argv[++i];
                 break;
             default:
                 break;

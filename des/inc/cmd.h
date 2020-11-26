@@ -32,6 +32,7 @@
 
 static int algo, mode, k_flag;
 static char* out_path;
+static char* header;
 static bit64 out_buff[MAX_BUFF_SIZE];
 static bit64 in_buff[MAX_BUFF_SIZE];
 static char* in_path;

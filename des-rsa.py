@@ -44,6 +44,47 @@ tk.Label(window, bg='yellow', width=20, text='Input your module (RSA)').pack()
 tk.Entry(window, show=None, font=('Arial', 14), textvariable=rsa_mod).pack()
 tk.Label(window, bg=None, width=20, text='').pack()
 
+def Encode(des_key, rsa_pk, rsa_module, check_rsa, save_dir, in_path):
+
+    if check_rsa:
+        os.system(".\\rsa\\rsa.exe -d {} -p {} -m {}  -o {}\\rsa-out.txt".format(des_key, rsa_pk, rsa_module, save_dir))
+    elif rsa_init.get() == 1:
+        os.system(".\\rsa\\rsa.exe -d {} --init  -o {}\\rsa-out.txt".format(des_key, save_dir))
+
+    header = ""
+    with open("{}\\rsa-out.txt".format(save_dir), 'r') as f:
+        fr = f.read()
+        r_s  = re.search(r'Result:[0-9]+',fr).group()[7:]
+        r_m = re.search(r'Module:[0-9]+',fr).group()[7:]
+        header = (40 - len(r_s))*'0' +  r_s + (40 - len(r_m))*'0' + r_m;
+    print(header)
+    for path_i in in_path:
+        fn = path_i.split('/')[-1]
+        os.system(".\\des\\des.exe {} {} 0 --dec {} --head {} = {}\\out\\{}".format(path_i, mode.get(), des_key, header, save_dir, fn))
+
+def Decode(rsa_sk, save_dir, file):
+    rsa_input = ""
+    rsa_module = ""
+    des_key = ""
+    fn = file.split('/')[-1]
+    temp_file = ".\\{}\\temp\\{}".format(save_dir, fn)
+    with open(file, "rb") as f:
+        content = f.read()
+        rsa_input = str(content[:40], encoding="utf-8")
+        rsa_module = str(content[40:80], encoding="utf-8")
+        with open(temp_file, "wb+") as f:
+            f.write(content[80:])
+    print('rsa-input:', rsa_input)
+    print('rsa-module:', rsa_module)
+    os.system(".\\rsa\\rsa.exe -d {} -s {} -m {}  -o {}\\rsa-out.txt".format(rsa_input, rsa_sk, rsa_module, save_dir))
+    with open("{}\\rsa-out.txt".format(save_dir), 'r') as f:
+        fr = f.read()
+        des_key = re.search(r'Result:[0-9]+',fr).group()[7:]
+    print('des_key:', des_key)
+    print(".\\des\\des.exe {} d 0 --dec {} = .\\{}\\out\\{}".format(temp_file, des_key, save_dir, fn))
+    os.system(".\\des\\des.exe {} d 0 --dec {} = .\\{}\\out\\{}".format(temp_file, des_key, save_dir, fn))
+
+
 
 # RUN
 def run():
@@ -53,53 +94,23 @@ def run():
     if len(mode.get()) == 0:
         print(tk.messagebox.showerror(title='ERROR',message='Encode or Deocde ?'))
         return
-    if len(des_key.get()) == 0:
+    if len(des_key.get()) == 0 and mode.get() == 'e':
         print(tk.messagebox.showerror(title='ERROR',message='No DES key!'))
-    check_rsa = len(rsa_key.get()) != 0 and len(rsa_mod.get()) != 0
+    check_rsa = (len(rsa_key.get()) != 0 and mode.get() == 'd') or \
+        (len(rsa_key.get()) != 0 and len(rsa_mod.get()) != 0 and mode.get() == 'e')
     if check_rsa == 0 and rsa_init.get() == 0:
          print(tk.messagebox.showerror(title='ERROR',message=
             'No RSA key or module！(input your key and module or choose init a rsa key pair'))
     index_dir = len(os.listdir(".\\result")) + 1
-    save_dir = ""
+    save_dir = "result\\result{}".format(index_dir)
+    os.system("mkdir {}\\out".format(save_dir))
+
     if mode.get() == 'e':
-        save_dir = "result\\result{}(encode)".format(index_dir)
+        Encode(des_key, rsa_key.get(), rsa_mod.get(), check_rsa, save_dir, in_path)
     else:
-        save_dir = "result\\result{}(decode)".format(index_dir)
-    os.system("mkdir {}\\des-out".format(save_dir))
-    """
-    For each file: $ .\\des\\des.exe  <in_file>  <e>   0  --del <key> = .\\result\\result_i\\des-out\\filename
-    For des key:   $ .\\rsa\\rsa.exe -d <data(dec)> --init -o .\\result\\result_i\\rsa-out.txt
-    ,or
-    For each file: $ .\\des\\des.exe  <in_file>  <e>   0  --dec <key> = .\\result\\result_i\\des-out\\filename
-    For des key:   $ .\\rsa\\rsa.exe -d <data(dec)> -p <PK> -m <Module>  -o .\\result\\result_i\\rsa-out.txt
-    ,or
-    For each file: $ .\\des\\des.exe  <in_file>  <e>   0  --dec <key> = .\\result\\result_i\\des-out\\filename
-    For des key:   $ .\\rsa\\rsa.exe -d <data(dec)> -s <SK> -m <Module>  -o .\\result\\result_i\\rsa-out.txt
-    """
-    # Run RSA
-    print("Running RSA ....")
-    if check_rsa and mode.get() == 'e':
-        os.system(".\\rsa\\rsa.exe -d {} -p {} -m {}  -o {}\\rsa-out.txt".format(des_key.get(), rsa_key.get(), rsa_mod.get(), save_dir))
-    elif check_rsa and mode.get() == 'd':
-        os.system(".\\rsa\\rsa.exe -d {} -s {} -m {}  -o {}\\rsa-out.txt".format(des_key.get(), rsa_key.get(), rsa_mod.get(), save_dir))
-    elif rsa_init.get() == 1:
-        os.system(".\\rsa\\rsa.exe -d {} --init  -o {}\\rsa-out.txt".format(des_key.get(), save_dir))
-    # GET str_key
-    fopen = open("{}\\rsa-out.txt".format(save_dir), 'r')
-    fileread = fopen.read()
-    fopen.close()
-    str_key = ""
-    if mode.get() == 'd':
-        str_key = re.search(r'Result:[0-9]+',fileread).group()[7:]
-    else:
-        str_key = des_key.get()
-
-    # Run DES
-
-    print("Running DES ....")
-    for path_i in in_path:
-        fn = path_i.split('/')[-1]
-        os.system(".\\des\\des.exe {} {} 0 --dec {} = {}\\des-out\\{}".format(path_i, mode.get(), str_key, save_dir, fn))
+        os.system('mkdir .\\{}\\temp'.format(save_dir))
+        for file in in_path:
+            Decode(rsa_key.get(), save_dir, file)
     
     os.system("move des-log.txt {}\\".format(save_dir))
     print(tk.messagebox.showinfo(title='INFO',message='Finished,and log had been saved in des-log.txt'))

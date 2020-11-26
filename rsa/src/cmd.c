@@ -36,12 +36,12 @@ OnePacket()
     bit128_print(cmd_rsa[RSA_OnePacket], P_DEC, fp);
     if(cmd_rsa[RSA_INIT] == 1)
     {   
-        fputs("\nModule:\t\t\t", fp);
-        bit128_print(cmd_rsa[RSA_N], P_DEC, fp);
         fputs("\nSecret Key:\t\t", fp);
         bit128_print(cmd_rsa[RSA_D], P_DEC, fp);
         fputs("\nPublic Key:\t\t", fp);
         bit128_print(cmd_rsa[RSA_E], P_DEC, fp);
+        fputs("\nModule:", fp);
+        bit128_print(cmd_rsa[RSA_N], P_DEC, fp);
     }
     fputs("\nResult:", fp);
     bit128_print(temp_out_packet, P_DEC, fp);
@@ -190,6 +190,7 @@ Str2Bit128(char * str)
 {
     if(str == NULL)
         return 0;
+    while(str[0] == '0') str = str + 1;
     bit128 ret = 0;
     for(int i = 0; i < 38 && str[i] != '\0'; i++)
     {
