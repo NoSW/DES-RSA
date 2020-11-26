@@ -1,7 +1,7 @@
 # DES + RSA
 
 ## DES 
-See **./des/demo-des.mp4**
+See **./des/demo-des.mp4** (TODO)
 
 ## RSA 
 See **./rsa/demo-rsa.mp4**
