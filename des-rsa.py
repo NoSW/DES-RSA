@@ -57,7 +57,6 @@ def Encode(des_key, rsa_pk, rsa_module, check_rsa, save_dir, in_path):
         r_s  = re.search(r'Result:[0-9]+',fr).group()[7:]
         r_m = re.search(r'Module:[0-9]+',fr).group()[7:]
         header = (40 - len(r_s))*'0' +  r_s + (40 - len(r_m))*'0' + r_m;
-    print(header)
     for path_i in in_path:
         fn = path_i.split('/')[-1]
         os.system(".\\des\\des.exe {} {} 0 --dec {} --head {} = {}\\out\\{}".format(path_i, mode.get(), des_key, header, save_dir, fn))
@@ -74,14 +73,10 @@ def Decode(rsa_sk, save_dir, file):
         rsa_module = str(content[40:80], encoding="utf-8")
         with open(temp_file, "wb+") as f:
             f.write(content[80:])
-    print('rsa-input:', rsa_input)
-    print('rsa-module:', rsa_module)
     os.system(".\\rsa\\rsa.exe -d {} -s {} -m {}  -o {}\\rsa-out.txt".format(rsa_input, rsa_sk, rsa_module, save_dir))
     with open("{}\\rsa-out.txt".format(save_dir), 'r') as f:
         fr = f.read()
         des_key = re.search(r'Result:[0-9]+',fr).group()[7:]
-    print('des_key:', des_key)
-    print(".\\des\\des.exe {} d 0 --dec {} = .\\{}\\out\\{}".format(temp_file, des_key, save_dir, fn))
     os.system(".\\des\\des.exe {} d 0 --dec {} = .\\{}\\out\\{}".format(temp_file, des_key, save_dir, fn))
 
 
@@ -106,7 +101,7 @@ def run():
     os.system("mkdir {}\\out".format(save_dir))
 
     if mode.get() == 'e':
-        Encode(des_key, rsa_key.get(), rsa_mod.get(), check_rsa, save_dir, in_path)
+        Encode(des_key.get(), rsa_key.get(), rsa_mod.get(), check_rsa, save_dir, in_path)
     else:
         os.system('mkdir .\\{}\\temp'.format(save_dir))
         for file in in_path:
