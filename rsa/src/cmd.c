@@ -134,6 +134,28 @@ CommandParsing(int argc, char* argv[])
                     if(argv[i+1] && argv[i+1][0] != '-')
                         cmd_path[PATH_OUT_KEY] = argv[++i];
                     cmd_rsa[RSA_INIT] = 1;
+                } else if(strcmp(argv[i], "--max") == 0)
+                {
+                    bit128 old_mod = 5;
+                    do{
+                        int i;
+                        for(i = 0; i < 100000; i++)
+                        {
+                            srand(time(0));
+                            RsaKeyPairGenerator(128, cmd_rsa);
+                            if(cmd_rsa[RSA_N] > old_mod)
+                                break;
+                        }
+                        if(i == 100000)
+                        {
+                            printf("Total searched RSA key pairs more than 100000, search failed\n");
+                            exit(1);
+                        }
+                        printf("Total searched RSA key pairs is %d: ", i + 1);
+                        bit128_print(cmd_rsa[RSA_N],P_HEX, NULL);
+                        old_mod = cmd_rsa[RSA_N];
+                    }while(1);
+
                 } else isError(1,"ERROR: Invalid Command: %s\n", argv[i]);
             } else {
                 switch (argv[i][1])

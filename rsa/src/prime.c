@@ -41,9 +41,9 @@ BigPrimeGenerator(int n_bits)
         //         printf("MillerRabin\n");
         // }
         if( ss_test == 0){
-            printf("\033[1;32mGOOD:\033[0m");
-            bit128_print(p, P_HEX, NULL);
-            printf("Number of odd numbers searched: %d\n", total);
+            //printf("\033[1;32mGOOD:\033[0m");
+            //bit128_print(p, P_HEX, NULL);
+            //printf("Number of odd numbers searched: %d\n", total);
             return p;
         }
         

@@ -6,10 +6,10 @@ RsaKeyPairGenerator(int n_bits, bit128 rsa[])
 {
     //  1. Select two big prime(64bit), assigned to p and q,
     //  and |p - q| can't be too small.
-    printf("Search the 1st prime ...\n");
+    //printf("Search the 1st prime ...\n");
     rsa[RSA_P] = BigPrimeGenerator(n_bits/2);
     rsa[RSA_Q] = rsa[RSA_P];
-    printf("Search the 2nd prime ...\n");
+    //printf("Search the 2nd prime ...\n");
     while ((rsa[RSA_P]>=rsa[RSA_Q]) && (rsa[RSA_P]-rsa[RSA_Q]) < INTERVAL ||
         rsa[RSA_P] < rsa[RSA_Q] && (rsa[RSA_Q]-rsa[RSA_P]) < INTERVAL)
             rsa[RSA_Q] = BigPrimeGenerator(n_bits/2);
