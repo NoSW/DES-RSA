@@ -32,6 +32,9 @@ OnePacket()
     // TEST BEGIN
     if(cmd_rsa[RSA_INIT] == 1)
     {
+        while(cmd_rsa[RSA_OnePacket] >= cmd_rsa[RSA_N])
+            RsaKeyPairGenerator(128, cmd_rsa);
+        Rsa(&temp_out_packet, cmd_rsa[RSA_OnePacket], cmd_rsa[RSA_K], cmd_rsa[RSA_N]);
         bit128 test_packet = 0;
         do{
             Rsa(&test_packet, temp_out_packet, cmd_rsa[RSA_D], cmd_rsa[RSA_N]);
@@ -205,7 +208,7 @@ Str2Bit128(char * str)
         return 0;
     while(str[0] == '0') str = str + 1;
     bit128 ret = 0;
-    for(int i = 0; i < 38 && str[i] != '\0'; i++)
+    for(int i = 0; i < 39 && str[i] != '\0'; i++)
     {
         ret *= 10;
         ret += str[i] - '0';

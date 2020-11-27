@@ -22,7 +22,7 @@ BigPrimeGenerator(int n_bits)
     bit128 p;
     int total = 0;
     do {
-        p = BigIntegerGenerator(n_bits, NT_ODD, NT_RAND);
+        p = BigIntegerGenerator(n_bits, NT_ODD, NT_BIG);
 
         total++;
         int ss_test = SolovayStrassenPrimalityTest(p);
