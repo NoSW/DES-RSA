@@ -44,18 +44,21 @@ tk.Label(window, bg='yellow', width=20, text='Input your module (RSA)').pack()
 tk.Entry(window, show=None, font=('Arial', 14), textvariable=rsa_mod).pack()
 tk.Label(window, bg=None, width=20, text='').pack()
 
-def Encode(des_key, rsa_pk, rsa_module, check_rsa, save_dir, in_path):
+def Encode(des_key, rsa_pk, rsa_module, rsa_init, check_rsa, save_dir, in_path):
 
     if check_rsa:
         os.system(".\\rsa\\rsa.exe -d {} -p {} -m {}  -o {}\\rsa-out.txt".format(des_key, rsa_pk, rsa_module, save_dir))
-    elif rsa_init.get() == 1:
+    elif rsa_init == 1:
         os.system(".\\rsa\\rsa.exe -d {} --init  -o {}\\rsa-out.txt".format(des_key, save_dir))
 
     header = ""
     with open("{}\\rsa-out.txt".format(save_dir), 'r') as f:
         fr = f.read()
         r_s  = re.search(r'Result:[0-9]+',fr).group()[7:]
-        r_m = re.search(r'Module:[0-9]+',fr).group()[7:]
+        if  rsa_init == 1:
+            r_m = re.search(r'Module:[0-9]+',fr).group()[7:]
+        else:
+            r_m = rsa_module
         header = (40 - len(r_s))*'0' +  r_s + (40 - len(r_m))*'0' + r_m;
     for path_i in in_path:
         fn = path_i.split('/')[-1]
@@ -101,7 +104,7 @@ def run():
     os.system("mkdir {}\\out".format(save_dir))
 
     if mode.get() == 'e':
-        Encode(des_key.get(), rsa_key.get(), rsa_mod.get(), check_rsa, save_dir, in_path)
+        Encode(des_key.get(), rsa_key.get(), rsa_mod.get(), rsa_init.get(), check_rsa, save_dir, in_path)
     else:
         os.system('mkdir .\\{}\\temp'.format(save_dir))
         for file in in_path:
