@@ -58,7 +58,8 @@ static char* getFileName(char*);
 
 // Run the  'RunFunction' and calculate the running time
 static double run_time;
-#define Counter(RunFunction)  LARGE_INTEGER  time_start;\
+#define Counter(RunFunction)  do{\
+                    LARGE_INTEGER  time_start;\
 	                LARGE_INTEGER time_over;\
 	                double dqFreq;\
 	                LARGE_INTEGER f;\
@@ -68,6 +69,36 @@ static double run_time;
                     do{RunFunction;}while(0);\
 	                QueryPerformanceCounter(&time_over);\
 	                run_time=1000000*(time_over.QuadPart-time_start.QuadPart)/dqFreq; \
+}while(0)
+
+#define CMD_MAX(max_times)  do{                         \
+                    bit128 old_mod = 5;                 \
+                    do{                                 \
+                        int i;                          \
+                        for(i = 0; i < max_times; i++)  \
+                        {                               \
+                            srand(time(0));                 \
+                            RsaKeyPairGenerator(128, cmd_rsa);\
+                            if(cmd_rsa[RSA_N] > old_mod)\
+                                break;                  \
+                        }                               \
+                        if(i == max_times)                  \
+                        {                                   \
+                            printf("Total searched RSA key pairs more than %d, search failed\n",max_times);\
+                            exit(1);                            \
+                        }                                           \
+                        printf("Total searched RSA key pairs is %d: ", i + 1);\
+                        bit128_print(cmd_rsa[RSA_N],P_HEX, NULL);\
+                        old_mod = cmd_rsa[RSA_N];                       \
+                    }while(1);                                  \
+}while(0)
+
+#define CMD_KEYPAIR_TEST(max_times) do{ \
+                    Counter( for(int i = 0; i < max_times; i++){ RsaKeyPairGenerator(128, cmd_rsa);});\
+                    printf("%d RSA key pairs are generated, taking %.4lf sec.\n",max_times,  run_time/1000000);\
+                    printf("Average speed: %.4lfmsec/key_pair", run_time/1000/max_times); \
+                    exit(1);\
+}while(0)
 
 static char help_info[] = "Usage:\n" \
             "\trsa.exe [option1] [option2] ... \n"\

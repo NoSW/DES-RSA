@@ -26,20 +26,6 @@ BigPrimeGenerator(int n_bits)
 
         total++;
         int ss_test = SolovayStrassenPrimalityTest(p);
-        /* TEST */
-        // int mr_test = MillerRabinPrimalityTest(p);
-        // int pass_test = test(p);
-        // if(pass_test != ss_test || pass_test != mr_test)
-        // {
-        //     if(pass_test == 0)
-        //         printf("\033[1;31mERROR:\t\033[0m\t");
-        //     else printf("\033[1;33mMISSING:\33[0m");
-        //     bit128_print(p, P_HEX, NULL);
-        //     if(pass_test != ss_test)
-        //         printf("SolovayStrassen\n");
-        //     if(pass_test != mr_test)
-        //         printf("MillerRabin\n");
-        // }
         if( ss_test == 0){
             //printf("\033[1;32mGOOD:\033[0m");
             //bit128_print(p, P_HEX, NULL);
