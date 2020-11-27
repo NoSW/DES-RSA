@@ -29,6 +29,19 @@ OnePacket()
     FILE* fp = fopen(cmd_path[PATH_OUT], "w");
     isError(fp==NULL, "ERROR: Can't create file: %s\n", cmd_path[PATH_OUT]);
     Rsa(&temp_out_packet, cmd_rsa[RSA_OnePacket], cmd_rsa[RSA_K], cmd_rsa[RSA_N]);
+    // TEST BEGIN
+    if(cmd_rsa[RSA_INIT] == 1)
+    {
+        bit128 test_packet = 0;
+        do{
+            Rsa(&test_packet, temp_out_packet, cmd_rsa[RSA_D], cmd_rsa[RSA_N]);
+            if(test_packet == cmd_rsa[RSA_OnePacket])
+                break;
+            RsaKeyPairGenerator(128, cmd_rsa);
+            Rsa(&temp_out_packet, cmd_rsa[RSA_OnePacket], cmd_rsa[RSA_K], cmd_rsa[RSA_N]);
+        }while(1);
+    }
+    // TEST END
     if(cmd_mode[MODE_STATUS] == MODE_ENCODE)
         fprintf(fp,"Type:\t\t\tENCODE\n");
     else fprintf(fp,"Type:\t\t\tDECODE\n");

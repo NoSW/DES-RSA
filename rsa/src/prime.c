@@ -209,11 +209,9 @@ JacobiSymbol(bit128 numer, bit128 denom)
 
     while (1)
     {
-
         // Theorem: (1/n) = 1
         if(m < 2)
             break;
-        
         //   Property 4: 
         //   If n and m both is odd number,
         //             { -(n/m), when m = n = 3 (mod 4);
@@ -251,7 +249,6 @@ JacobiSymbol(bit128 numer, bit128 denom)
             m /= 2;
         }
     }
-
     return sign;
 }
 
