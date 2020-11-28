@@ -62,7 +62,7 @@ def Encode(des_key, rsa_pk, rsa_module, rsa_init, check_rsa, save_dir, in_path):
         header = (40 - len(r_s))*'0' +  r_s + (40 - len(r_m))*'0' + r_m;
     for path_i in in_path:
         fn = path_i.split('/')[-1]
-        os.system(".\\des\\des.exe {} {} 0 --dec {} --head {} = {}\\out\\{}".format(path_i, mode.get(), des_key, header, save_dir, fn))
+        os.system(".\\des\\des.exe {} {} 0 --dec {} --log .\\{}\\des-log.txt --head {} = {}\\out\\{}".format(path_i, mode.get(), des_key, save_dir, header, save_dir, fn))
 
 def Decode(rsa_sk, save_dir, file):
     rsa_input = ""
@@ -80,7 +80,7 @@ def Decode(rsa_sk, save_dir, file):
     with open("{}\\rsa-out.txt".format(save_dir), 'r') as f:
         fr = f.read()
         des_key = re.search(r'Result:[0-9]+',fr).group()[7:]
-    os.system(".\\des\\des.exe {} d 0 --dec {} = .\\{}\\out\\{}".format(temp_file, des_key, save_dir, fn))
+    os.system(".\\des\\des.exe {} d 0 --dec {} --log .\\{}\\des-log.txt = .\\{}\\out\\{}".format(temp_file, des_key, save_dir, save_dir, fn))
 
 
 
@@ -109,8 +109,7 @@ def run():
         os.system('mkdir .\\{}\\temp'.format(save_dir))
         for file in in_path:
             Decode(rsa_key.get(), save_dir, file)
-    
-    os.system("move des-log.txt {}\\".format(save_dir))
+            
     print(tk.messagebox.showinfo(title='INFO',message='Finished,and log had been saved in des-log.txt'))
     in_path.clear()
 

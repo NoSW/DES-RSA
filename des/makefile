@@ -14,4 +14,4 @@ des: $(OBJ)
 
 .PHONY: clean
 clean:
-	@$(RM-F) $(OBJ) ./encoded/* ./decoded/*
+	@$(RM-F) *.exe $(OBJ)

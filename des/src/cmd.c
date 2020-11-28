@@ -56,7 +56,10 @@ OutLog()
     // get current time
     getCurrentTime();
     // Print log
-    fp = fopen("des-log.txt","a");
+    if(log_path == NULL)
+        fp = fopen("des-log.txt","a");
+    else fp = fopen(log_path,"w+");
+    
     fprintf(fp,"time:\t%s\n",curtime);
     if(mode == MODE_ENCODE)
         fprintf(fp,"Type:\tENCODE\nAlgo:\t%d\n",algo);
@@ -78,7 +81,7 @@ static void
 CommandParsing(int argc, char* argv[])
 {
     int k_flag = 0;
-    header = NULL;
+    header = log_path = NULL;
     for(int i = 2; i < argc; i++)
     {
         if(argv[i] != NULL)
@@ -112,6 +115,8 @@ CommandParsing(int argc, char* argv[])
                     bit_keys[k_flag++] = Str2Bit64(argv[++i]);
                 else if(strcmp(argv[i], "--head") == 0)
                     header = argv[++i];
+                else if(strcmp(argv[i], "--log") == 0)
+                    log_path = argv[++i];
                 break;
             default:
                 break;
