@@ -14,4 +14,4 @@ rsa: $(OBJ)
 
 .PHONY: clean
 clean:
-	@$(RM-F) *.txt $(OBJ)
+	@$(RM-F) *.exe $(OBJ)

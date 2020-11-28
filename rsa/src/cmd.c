@@ -139,7 +139,9 @@ CommandParsing(int argc, char* argv[])
                     CMD_MAX(10000);
                 } else if(strcmp(argv[i], "--test") == 0)
                 {
-                    CMD_KEYPAIR_TEST(10000);
+                    CMD_KEYPAIR_TEST(1000);
+                } else if(strcmp(argv[i], "--speed") == 0){
+                    CMD_SPEED_TEST(1000);
                 } else isError(1,"ERROR: Invalid Command: %s\n", argv[i]);
             } else {
                 switch (argv[i][1])

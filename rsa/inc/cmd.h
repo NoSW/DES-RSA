@@ -100,6 +100,22 @@ static double run_time;
                     exit(1);\
 }while(0)
 
+#define CMD_SPEED_TEST(max_times) do{ \
+                    bit128 buff[10000]={0}; \
+                    bit128 out1, out2; \
+                    for(int i = 0 ; i < 10000; i++) \
+                        buff[i] = BigIntegerGenerator(126, NT_RAND,NT_RAND); \
+                    RsaKeyPairGenerator(128, cmd_rsa); \
+                    Counter( for(int i = 0; i < max_times && i < 10000; i++){ \
+                                Rsa(&out1, buff[i], cmd_rsa[RSA_E], cmd_rsa[RSA_N]);\
+                                Rsa(&out2, out1, cmd_rsa[RSA_D], cmd_rsa[RSA_N]);\
+                                isError(out2 != buff[i], "ERROR:%d", i); \
+                        });\
+                    printf("%d encode-decode-cycles were performed, taking %.4lf sec.\n",max_times,  run_time/1000000);\
+                    printf("Average speed: %.4lfmsec/cycle", run_time/1000/max_times); \
+                    exit(1);\
+}while(0)
+
 static char help_info[] = "Usage:\n" \
             "\trsa.exe [option1] [option2] ... \n"\
             "\nOptions:\n"\
