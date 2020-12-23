@@ -19,7 +19,7 @@ DES现在已经不是一种安全的加密方法，主要因为它使用的56位
 
 ### B. 算法过程图
 
-<img src="C:\Users\LLQ\AppData\Roaming\Typora\typora-user-images\image-20201013100726889.png" alt="image-20201013100726889" style="zoom:67%;" />
+<img srimg\\image-20201013100726889.png" alt="image-20201013100726889" style="zoom:67%;" />
 
 #### 1. 加密过程：
 
@@ -71,7 +71,7 @@ $$
    $ des.exe
    ```
 
-   <img src="C:\Users\LLQ\AppData\Roaming\Typora\typora-user-images\image-20201021204523822.png" alt="image-20201021204523822"  />
+   <img srimg\\image-20201021204523822.png" alt="image-20201021204523822"  />
 
    
 
@@ -106,13 +106,13 @@ $ make
 
 ​	2. 运行python脚本`ui.py`，运行结果被如下图所示
 
-<img src="C:\Users\LLQ\AppData\Roaming\Typora\typora-user-images\image-20201029190105870.png" alt="image-20201029190105870" style="zoom:67%;" />
+<img srimg\\image-20201029190105870.png" alt="image-20201029190105870" style="zoom:67%;" />
 
 3. 选择 并输入加密参数，例如：
 
-   ![image-20201029190230832](C:\Users\LLQ\AppData\Roaming\Typora\typora-user-images\image-20201029190230832.png)
+   ![image-20201029190230832](img\\image-20201029190230832.png)
 
-   ![image-20201029190310374](C:\Users\LLQ\AppData\Roaming\Typora\typora-user-images\image-20201029190310374.png)
+   ![image-20201029190310374](img\\image-20201029190310374.png)
 
 加密结果输出项目目录下，/des/encoded/
 
@@ -160,19 +160,17 @@ des
 
    因为明文是64bit一组，故采用了`unsigned long long`来存储一组明文，对下标置换、移位等操作用到了bit级的c语言代码：
 
-   ![image-20201021201958640](C:\Users\LLQ\AppData\Roaming\Typora\typora-user-images\image-20201021201958640.png)
-
-   
+   ![image-20201021201958640](img\\image-20201021201958640.png)
 
 2. **Des计算单元**
 
-   ![image-20201021202422384](C:\Users\LLQ\AppData\Roaming\Typora\typora-user-images\image-20201021202422384.png)
+   ![image-20201021202422384](img\\image-20201021202422384.png)
 
    
 
 3. **CBC模式**
 
-   ![image-20201029230542519](C:\Users\LLQ\AppData\Roaming\Typora\typora-user-images\image-20201029230542519.png)
+   ![image-20201029230542519](img\\image-20201029230542519.png)
 
    
 
@@ -183,13 +181,13 @@ des
    3. DES-EEE2 ($K1=K3$)
    4. DES-EDE2 ($K1=K3$)
 
-   ![image-20201021203005058](C:\Users\LLQ\AppData\Roaming\Typora\typora-user-images\image-20201021203005058.png)
+   ![image-20201021203005058](img\\image-20201021203005058.png)
 
    
 
 5. **用户界面——命令行操作**
 
-   ![image-20201029231312792](C:\Users\LLQ\AppData\Roaming\Typora\typora-user-images\image-20201029231312792.png)
+   ![image-20201029231312792](img\\image-20201029231312792.png)
 
    
 
@@ -199,7 +197,7 @@ des
 
    加/密时间， 密钥， 输入/除路径等信息，类似如下：
 
-   ![image-20201021212313438](C:\Users\LLQ\AppData\Roaming\Typora\typora-user-images\image-20201021212313438.png)
+   ![image-20201021212313438](img\\image-20201021212313438.png)
 
 7. 图形界面，利用pyhton的tkinter模块构建简单的用户界面获取参数，然后把参数组织成命令行形式，通过`os.system('cmd')`输入命令行，调用`des.exe`程序进行批量加解密。
 
@@ -292,21 +290,21 @@ $$
 
    1. 打开图像界面（即运行`des-rsa.py`)
 
-      <img src="C:\Users\LLQ\AppData\Roaming\Typora\typora-user-images\image-20201127090403037.png" alt="image-20201127090403037" style="zoom:50%;" />
+      <img srimg\\image-20201127090403037.png" alt="image-20201127090403037" style="zoom:50%;" />
 
    2. 选择`Encode`即加密模式，点击`open file`选择要加密的文件，输入DES密钥（在64bit的表示范围内的十进制数字）。如果要初始化一个RSA密钥对，勾选`init rsa`， 点击`run`
 
-      ![image-20201127090617263](C:\Users\LLQ\AppData\Roaming\Typora\typora-user-images\image-20201127090617263.png)
+      ![image-20201127090617263](img\\image-20201127090617263.png)
 
    3. 加密结果保存在`result\`目录下，（这里加密结果是最新的一个result，下图中就是resut5\目录
 
-      ![image-20201127090926021](C:\Users\LLQ\AppData\Roaming\Typora\typora-user-images\image-20201127090926021.png)
+      ![image-20201127090926021](img\\image-20201127090926021.png)
 
    4. 打开加密结果文件夹
 
       * `des-log.txt`,`rsa-out.txt`分别保存了DES加密信息，RSA加密信息。初始化的RSA密钥对可以在`rsa-out.txt`中找到（如下图）
 
-        <img src="C:\Users\LLQ\AppData\Roaming\Typora\typora-user-images\image-20201127091307286.png" alt="image-20201127091307286" style="zoom:67%;" />
+        <img srimg\\image-20201127091307286.png" alt="image-20201127091307286" style="zoom:67%;" />
 
 
 
@@ -321,17 +319,17 @@ $$
 > |-----40B------|----40B-----|--variable--| 
 > ```
 >
-> ![image-20201127091350624](C:\Users\LLQ\AppData\Roaming\Typora\typora-user-images\image-20201127091350624.png)
+> ![image-20201127091350624](img\\image-20201127091350624.png)
 
   * 选择`Decode`, 选择待解密的文件，只需要输入RSA私钥，点击`run`
     
 
-![image-20201127091720675](C:\Users\LLQ\AppData\Roaming\Typora\typora-user-images\image-20201127091720675.png)
+![image-20201127091720675](img\\image-20201127091720675.png)
         
 * 查看解密结果，解密成功！
       
 
-<img src="C:\Users\LLQ\AppData\Roaming\Typora\typora-user-images\image-20201127091842702.png" alt="image-20201127091842702" style="zoom:50%;" />
+<img srimg\\image-20201127091842702.png" alt="image-20201127091842702" style="zoom:50%;" />
       
 * 总结：加密需要DES密钥、RSA公钥和RSA模数（或者init)； 解密只需要RSA私钥
 
@@ -408,7 +406,7 @@ $$
 
       * 如果是初始化RSA密钥对并对`m`加密，会一直产生密钥对，直到密钥对的模数足够大能够对`m`加密。
 
-        > 但`m`允许的最大值并不是$2^{128}-1$。通过测试(不停地随机生成密钥对，找到更大的模数，查找次数上限设为1,000,000次)，某次测试结果找到的近似最大模数是`0xfebe909664ae0fd2a9ad7948b1702305`（如下图）![image-20201127112000431](C:\Users\LLQ\AppData\Roaming\Typora\typora-user-images\image-20201127112000431.png)
+        > 但`m`允许的最大值并不是$2^{128}-1$。通过测试(不停地随机生成密钥对，找到更大的模数，查找次数上限设为1,000,000次)，某次测试结果找到的近似最大模数是`0xfebe909664ae0fd2a9ad7948b1702305`（如下图）![image-20201127112000431](img\\image-20201127112000431.png)
 
    ​     
 
@@ -418,30 +416,30 @@ $$
 
    1. RSA密钥对生成
 
-      ![image-20201127021002153](C:\Users\LLQ\AppData\Roaming\Typora\typora-user-images\image-20201127021002153.png)
+      ![image-20201127021002153](img\\image-20201127021002153.png)
 
    2. 大奇整数生成
 
       * `parity`表示生成的是奇数、偶数、还是随机。
       * `flag`表示生成的是大整数（强制`n_bits`比特位置1）或者随机
 
-      ![image-20201127021306557](C:\Users\LLQ\AppData\Roaming\Typora\typora-user-images\image-20201127021306557.png)
+      ![image-20201127021306557](img\\image-20201127021306557.png)
 
    3. 大素数生成
 
-      ![image-20201127021410773](C:\Users\LLQ\AppData\Roaming\Typora\typora-user-images\image-20201127021410773.png)
+      ![image-20201127021410773](img\\image-20201127021410773.png)
 
    4. Jacobi符号
 
-      ![image-20201127022827771](C:\Users\LLQ\AppData\Roaming\Typora\typora-user-images\image-20201127022827771.png)
+      ![image-20201127022827771](img\\image-20201127022827771.png)
 
    5. 素性检测
 
-      ![image-20201127022924570](C:\Users\LLQ\AppData\Roaming\Typora\typora-user-images\image-20201127022924570.png)
+      ![image-20201127022924570](img\\image-20201127022924570.png)
 
    6. 比特位置0置1
 
-      ![image-20201127023016514](C:\Users\LLQ\AppData\Roaming\Typora\typora-user-images\image-20201127023016514.png)
+      ![image-20201127023016514](img\\image-20201127023016514.png)
 
 ### E. 速度测试
 
@@ -456,7 +454,7 @@ $$
 
   结果：
 
-![image-20201127184041899](C:\Users\LLQ\AppData\Roaming\Typora\typora-user-images\image-20201127184041899.png)
+![image-20201127184041899](img\\image-20201127184041899.png)
 
 ​		运行
 
@@ -466,13 +464,8 @@ $ rsa.exe --speed
 ```
 ​		结果：
 
-![image-20201128105056571](C:\Users\LLQ\AppData\Roaming\Typora\typora-user-images\image-20201128105056571.png)
+![image-20201128105056571](img\\image-20201128105056571.png)
 
 ### F. 总结
 
 RSA算法中涉及了大量的加法、乘法运算和DES的置换操作相比速度显著地更慢。但RSA理论上的计算困难性以及具有公钥体制的优点，相比之下，RSA有DES无法替代的优点。因此RSA适合和DES组合构成密码系统：RSA用来加密数据量小的DES密钥，DES用来加密原始数据，可以使得密码系统更安全，速度更快。
-
-
-## **TODO**
-
-`README.md`的图片（ **无图一身轻/🐶**  
